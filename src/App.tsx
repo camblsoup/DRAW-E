@@ -4,7 +4,7 @@ import Canvas from './canvas/Canvas'
 function App() {
 
   function showCanvas() {
-    let canvas = document.getElementById('canvas');
+    const canvas = document.getElementById('canvas');
     if (canvas)
       canvas.style.display = "block";
   }
