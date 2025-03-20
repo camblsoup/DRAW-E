@@ -1,6 +1,6 @@
 .sidebar {
     /* size */
-    width: 13vw;
+    width: 15vw;
     height: 100vh;
 
     /* positioning */
@@ -10,15 +10,11 @@
 
     /* properties */
     background-color: #F9F9F9;
+    min-width: 200px;
 
-    padding: 20px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-
-    min-width: 100px;
-
+    /* animation */
+    transition: width 0.5s ease, min-width 0.5s ease;
+    overflow: clip;
 }
 
 /***********************************************/
@@ -97,4 +93,22 @@
 
 .new-project-label {
     text-align: left;
+}
+
+#minimize-icon {
+    z-index: 2;
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    width: 35px;
+    height: 30px;
+}
+
+#size-box {
+    width: 15vw;
+    min-width: 100px;
+    padding: 50px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
