@@ -1,9 +1,10 @@
 import './Canvas.css'
+import {Excalidraw} from "@excalidraw/excalidraw";
 
 
 function Canvas({ id }: { id: string }) {
     function closeCanvas() {
-        let canvas = document.getElementById('canvas');
+        const canvas = document.getElementById('canvas');
         if (canvas)
             canvas.style.display = "none"
     }
@@ -11,10 +12,7 @@ function Canvas({ id }: { id: string }) {
     return (
         <>
             <div id={id}>
-                <div id='canvas-content'>
-                    <p>This is a canvas</p>
-                    <img src="https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/1015f/MainBefore.jpg" alt="placeholder"></img>
-                </div>
+                <Excalidraw></Excalidraw>
                 <div id='background' onClick={closeCanvas}></div>
             </div>
         </>
