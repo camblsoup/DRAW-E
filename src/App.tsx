@@ -1,33 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import {generateImage} from "./GPT/GPT.ts"
 
 function App() {
-  const [count, setCount] = useState(0)
+    function getImage() {
+        const image = document.getElementById("generated-image") as HTMLImageElement;
+
+        if (!image)
+            return;
+
+        image.src = "/Loading_icon.gif";
+        image.alt = "Generating image..."
+
+        generateImage("A red balloon").then((value) => {
+            if (value?.url) {
+                image.src = value.url;
+                image.alt = "User generated image";
+            }
+            else {
+                throw new Error("Error generating image")
+            }
+        }).catch((error) => {
+            console.error(error)
+            image.src = "/error-image-generic.png"
+            image.alt = "Could not generate image"
+        })
+    }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        <button onClick={getImage}>generate image</button>
+        <img id={"generated-image"} alt={"Generated image placeholder"}/>
     </>
   )
 }
