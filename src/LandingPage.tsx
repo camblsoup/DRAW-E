@@ -23,7 +23,7 @@ function LandingPage() {
               <input className="prompt-box-text" type='text-area' placeholder='Ask me to draw something!' />
             </div>
             <div className='prompt-box-button-container'>
-              <div style={{}}>
+              <div className='left-buttons'>
                 <div>
                   1
                 </div>
