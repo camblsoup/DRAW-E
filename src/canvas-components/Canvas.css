@@ -1,0 +1,15 @@
+.container{
+    background: grey;
+    width: 100vh;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.drawing-board canvas{
+    background: white;
+    width: 100vh;
+    height: 75vh;
+}
