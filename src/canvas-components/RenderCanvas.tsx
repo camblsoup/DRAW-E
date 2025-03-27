@@ -3,6 +3,8 @@ import {MouseEvent} from "react";
 import {useState} from "react";
 import OpenCanvasBtn from './OpenCanvasBtn.tsx';
 import Canvas from './Canvas.tsx';
+import { useRef } from "react";
+
 
 interface Props{
     isCanvasOpen: Boolean;
@@ -11,10 +13,24 @@ interface Props{
 
 export default function RenderCanvas({isCanvasOpen, setIsCanvasOpen}: Props){
 
+    const canvasRef = useRef(null);
+    
     return <>
         <div>
-        {isCanvasOpen ? (<Canvas setIsCanvasOpen={setIsCanvasOpen}></Canvas>) // if the canvas is open ==> render the canvas else ==> render button to open canvas
-            : (<OpenCanvasBtn setIsCanvasOpen={setIsCanvasOpen}> </OpenCanvasBtn>)} 
+        {isCanvasOpen ? (
+            <>
+            <section className = "drawing-board">
+            <canvas color="white" ref={canvasRef}> 
+
+            </canvas>
+            <Canvas setIsCanvasOpen={setIsCanvasOpen} canvasRef={canvasRef}>
+
+            </Canvas>
+            </section>
+            </>)
+            : (
+            <OpenCanvasBtn setIsCanvasOpen={setIsCanvasOpen}>
+            </OpenCanvasBtn>)} 
 
         </div>    
     </>
