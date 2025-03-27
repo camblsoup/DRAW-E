@@ -2,7 +2,7 @@
 import './LandingPage.css'
 
 import up_arrow from './assets/up_arrow2.svg'
-import logo from './assets/logo.svg'
+import logo2 from './assets/logo2.svg'
 import profile_icon from './assets/profile_button.svg'
 
 
@@ -20,7 +20,7 @@ function LandingPage() {
         <div className="body">
           <div className="body-column-container">
             <div>
-              <img style={{ width: '10vw' }} src={logo} />
+              <img style={{ width: '10vw' }} src={logo2} />
             </div>
             <div className="program-name">
               DRAW-E
