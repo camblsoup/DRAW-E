@@ -49,7 +49,7 @@ function Sidebar() {
           </div>
 
           {/* New Project Button*/}
-          <label style={{ fontWeight: "700", fontSize: "20px", }} htmlFor="new-project-button" className="new-project-label">New Project</label>
+          <label style={{ fontWeight: "700", fontSize: "20px", color: "black"}} htmlFor="new-project-button" className="new-project-label">New Project</label>
           <div id="new-project-button" className="new-project-button">
             <img className="icon2" src={plus_button}  alt={"New project icon"}/>
             New Project
