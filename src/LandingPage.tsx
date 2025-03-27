@@ -1,5 +1,6 @@
 
 import './LandingPage.css'
+import { useState } from 'react'
 
 import up_arrow from './assets/up_arrow2.svg'
 import logo2 from './assets/logo2.svg'
@@ -7,6 +8,16 @@ import profile_icon from './assets/profile_button.svg'
 
 
 function LandingPage() {
+  const [promptText, setPromptText] = useState('')
+
+  const handlePrompt = () => {
+    if (!promptText.trim()) {
+      alert('The prompt is empty. Please enter a prompt.')
+      return
+    }
+    console.log('Generating user image....', promptText)
+    //Call GPT API HERE
+  };
 
   return (
     <>
@@ -50,7 +61,7 @@ function LandingPage() {
 
               {/* text box*/}
               <form>
-                <textarea className="prompt-box-text" placeholder='Ask me to draw something!' />
+                <textarea className="prompt-box-text" placeholder='Ask me to draw something!' value={promptText} onChange={(e) => setPromptText(e.target.value)} />
               </form>
               {/* the buttons container*/}
               <div className='prompt-box-button-container'>
@@ -68,7 +79,7 @@ function LandingPage() {
                   </div>
                 </div>
                 <div className="prompt-box-button-container-right">
-                  <div className="enter-prompt-button">
+                  <div className="enter-prompt-button" onClick={handlePrompt}>
                     <img className="up-arrow-icon" src={up_arrow} />
                   </div>
                 </div>
