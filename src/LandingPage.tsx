@@ -2,6 +2,7 @@
 import './LandingPage.css'
 
 import up_arrow from './assets/up_arrow2.svg'
+import logo from './assets/logo.svg'
 
 
 function LandingPage() {
@@ -16,7 +17,26 @@ function LandingPage() {
 
         {/* 2 */}
         <div className="body">
-          john
+          <div className="body-column-container">
+            <div>
+              <img style={{ width: '10vw' }} src={logo} />
+            </div>
+            <div className="program-name">
+              DRAW-E
+            </div>
+            <div >
+              By Team 10
+            </div>
+            <div>
+              Let me turn your imagination into imagery!
+            </div>
+            <div>
+              <div className="new-canvas-button-main">
+                Create a new canvas
+              </div>
+            </div>
+
+          </div>
         </div>
 
         {/* 3 */}

@@ -19,6 +19,42 @@
   height: 70vh;
 }
 
+.body-column-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin: 10%;
+
+  text-align: center;
+
+  gap: 10px;
+}
+
+.program-name {
+  font-weight: 600;
+  font-size: 2.5vw;
+}
+
+.new-canvas-button-main {
+  background-color: #1A3B42;
+  color: white;
+  padding: 10px 20px;
+
+  border-radius: 20px;
+
+  font-size: 20px;
+}
+
+.new-canvas-button-main:hover {
+  cursor: pointer;
+}
+
+.new-canvas-button-main:active {
+  transform: translateY(1.5px);
+}
+
 /** 3 **/
 .three-container {
   height: 25vh;
@@ -102,6 +138,10 @@
   line-height: 23px;
 }
 
+.plus-button:hover {
+  cursor: pointer;
+}
+
 .new-canvas-button {
   background-color: #1A3B42;
   color: white;
@@ -112,10 +152,21 @@
   border-radius: 20px;
 }
 
+.new-canvas-button:hover {
+  cursor: pointer;
+}
+
+.new-canvas-button:active {
+  transform: translateY(1.5px);
+}
 
 .prompt-box-button-container-right {
   margin-left: auto;
   right: 0;
+}
+
+.enter-prompt-button:hover {
+  cursor: pointer;
 }
 
 .up-arrow-icon {
@@ -136,7 +187,7 @@
   font-size: 12px;
 }
 
-.warning{
+.warning {
   margin-top: 10px;
   font-size: 1vw;
 }
