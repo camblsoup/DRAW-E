@@ -3,6 +3,7 @@ import './LandingPage.css'
 
 import up_arrow from './assets/up_arrow2.svg'
 import logo from './assets/logo.svg'
+import profile_icon from './assets/profile_button.svg'
 
 
 function LandingPage() {
@@ -12,7 +13,7 @@ function LandingPage() {
       <div className="fit-width">
         {/* 1 */}
         <div className="profile-icon-container">
-          ●
+          <img src={profile_icon} />
         </div>
 
         {/* 2 */}
