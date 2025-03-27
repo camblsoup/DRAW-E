@@ -1,6 +1,9 @@
 
 import './LandingPage.css'
 
+import up_arrow from './assets/up_arrow2.svg'
+
+
 function LandingPage() {
 
   return (
@@ -18,21 +21,36 @@ function LandingPage() {
 
         {/* 3 */}
         <div className="three-container">
-          <div className='prompt-box-container'>
+          {/* positioning for input box and button*/}
+          <div className="prompt-box-container">
+
+            {/* input box and buttons*/}
             <div className="prompt-box">
-              <input className="prompt-box-text" type='text-area' placeholder='Ask me to draw something!' />
-            </div>
-            <div className='prompt-box-button-container'>
-              <div style={{}}>
-                <div>
-                  1
+
+              {/* text box*/}
+              <form>
+                <textarea className="prompt-box-text" placeholder='Ask me to draw something!' />
+              </form>
+              {/* the buttons container*/}
+              <div className='prompt-box-button-container'>
+
+                {/* the buttons container, left side positioning */}
+                <div className='prompt-box-button-container-left'>
+                  {/* the buttons on the left */}
+                  <div className='prompt-box-button-container-contents'>
+                    <div className="plus-button">
+                      +
+                    </div>
+                    <div className="new-canvas-button">
+                      New Canvas
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  2
+                <div className="prompt-box-button-container-right">
+                  <div className="enter-prompt-button">
+                    <img className="up-arrow-icon" src={up_arrow} />
+                  </div>
                 </div>
-              </div>
-              <div>
-                3
               </div>
             </div>
           </div>
@@ -47,7 +65,7 @@ function LandingPage() {
             ?
           </div>
         </div>
-      </div>
+      </div >
     </>
   )
 }
