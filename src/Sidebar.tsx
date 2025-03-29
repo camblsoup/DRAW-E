@@ -1,4 +1,3 @@
-
 {/* Assets */ }
 import sidebar_icon from './assets/sidebar_icon.svg'
 import magnifying_glass from './assets/magnifying_glass.svg'

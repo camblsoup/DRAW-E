@@ -1,4 +1,3 @@
-
 import './LandingPage.css'
 import { useState } from 'react'
 
@@ -9,6 +8,8 @@ import profile_icon from './assets/profile_button.svg'
 
 function LandingPage() {
   const [promptText, setPromptText] = useState('')
+  const [isHidden, setIsHidden] = useState(true);
+  const [showChat, setShowChat] = useState(false);
 
   const handlePrompt = () => {
     if (!promptText.trim()) {
@@ -17,6 +18,8 @@ function LandingPage() {
     }
     console.log('Generating user image....', promptText)
     //Call GPT API HERE
+    setIsHidden(false);
+    setShowChat(true);
   };
 
   return (
@@ -28,29 +31,45 @@ function LandingPage() {
         </div>
 
         {/* 2 */}
-        <div className="body">
-          <div className="body-column-container">
-            <div>
-              <img style={{ width: '10vw' }} src={logo2} />
-            </div>
-            <div className="program-name">
-              DRAW-E
-            </div>
-            <div >
-              By Team 10
-            </div>
-            <div>
-              Let me turn your imagination into imagery!
-            </div>
-            <div>
-              <div className="new-canvas-button-main">
-                Create a new canvas
+        {showChat && (
+          <div className="chat-container">
+            <div className='chat'>
+              <div className='user-text'>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </div>
+              <div className='bot-text'>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </div>
+              <div className='user-text'>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
               </div>
             </div>
-
           </div>
-        </div>
+        )}
+        {isHidden && (
+          <div className="body">
+            <div className="body-column-container">
+              <div>
+                <img style={{ width: '10vw' }} src={logo2} />
+              </div>
+              <div className="program-name">
+                DRAW-E
+              </div>
+              <div >
+                By Team 10
+              </div>
+              <div>
+                Let me turn your imagination into imagery!
+              </div>
+              <div>
+                <div className="new-canvas-button-main">
+                  Create a new canvas
+                </div>
+              </div>
 
+            </div>
+          </div>
+        )}
         {/* 3 */}
         <div className="three-container">
           {/* positioning for input box and button*/}
