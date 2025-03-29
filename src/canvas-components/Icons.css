@@ -1,0 +1,10 @@
+#pencil{
+
+    position: absolute;
+    height: 44.32px;
+    left: 25%;
+    right: 25%;
+    top: calc(50% - 44.32px/2 - 363.68px);
+
+
+}

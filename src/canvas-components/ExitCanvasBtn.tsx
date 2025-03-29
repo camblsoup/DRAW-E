@@ -8,5 +8,5 @@ export default function ExitCanvasBtn({setIsCanvasOpen}: Props){
         setIsCanvasOpen(false);
     }
     
-    return (<button onClick={handleClick} text-align> EXIT CANVAS </button>);
+    return (<button onClick={handleClick} className="canvas-buttons"> EXIT CANVAS </button>);
 }

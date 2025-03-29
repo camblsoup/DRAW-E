@@ -7,10 +7,11 @@ import { useRef } from "react";
 // Ref Documentation https://react.dev/reference/react/useRef
 interface Props{
     setIsCanvasOpen: (canvasState: Boolean) => Boolean;
+    selectedTool: String;
     //canvasRef: typeof useRef;
 }
 
-export default function Canvas({setIsCanvasOpen}: Props){
+export default function Canvas({setIsCanvasOpen, selectedTool}: Props){
     //let isDrawing = false;
 
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -27,8 +28,8 @@ export default function Canvas({setIsCanvasOpen}: Props){
         canvas.width = canvas.offsetWidth;
         canvas.height = canvas.offsetHeight;
         ctx.lineWidth = 2;
-        ctx.lineCap = "round";
-        ctx.strokeStyle = "blue";
+        ctx.lineCap = "round"; // pen style 
+        ctx.strokeStyle = "blue"; // 
 
         window.addEventListener( "load", ()=> {
             try{
@@ -75,9 +76,10 @@ export default function Canvas({setIsCanvasOpen}: Props){
     }, [isDrawing]);
 
     return <>
-        <div className= "container">
+        <section className= "container">
+            
+            <canvas ref={canvasRef} className="drawing-canvas"></canvas>
             <ExitCanvasBtn setIsCanvasOpen={setIsCanvasOpen}> </ExitCanvasBtn>
-            <canvas ref={canvasRef}> className="drawing-canvas</canvas>
-        </div>
+        </section>
     </>
 }
