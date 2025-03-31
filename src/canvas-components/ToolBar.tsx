@@ -1,4 +1,5 @@
 import ToolBtn from "./ToolBtn";
+import "./Tools.css";
 
 interface Props{
     selectedTool: String;
@@ -13,14 +14,15 @@ export default function ToolBar({selectedTool, setSelectedTool} : Props){
         'laso',
         'square',
         'dropper',
-        'colour-select'
+        'colour-select',
+        'undo',
+        'redo'
     ];
     
-
     return <>
-        <section className="tools-bar">
-            {toolTypes.map((tool)=> (<ToolBtn toolName={tool} setSelectedTool={setSelectedTool} key={tool}> </ToolBtn>))}
-        </section>
+        <div className="tools-bar">
+            {toolTypes.map((selectedTool)=> (<ToolBtn toolName={selectedTool} setSelectedTool={setSelectedTool} key={selectedTool} /> ))}
+        </div>
     </>
 
 }

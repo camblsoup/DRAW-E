@@ -1,25 +1,21 @@
-.container{
-    background: grey;
-    width: 200px;
-    height: 100%;
+.container {
+    background-color: white;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
+    border-radius: 20px;
 }
 
-.drawing-canvas canvas{
-    background: white;
-    width: auto;
-    height: auto;
-    display: flex;
+.drawing-canvas canvas {
+
+
 }
 
-.canvas-buttons button{
-
+.canvas-buttons button {
     position: absolute;
-    left: 0;
     right: 0;
     bottom: 0;
-
+    left: 0;
 }
