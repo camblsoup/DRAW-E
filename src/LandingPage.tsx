@@ -71,7 +71,19 @@ function LandingPage() {
                   {/* the buttons on the left */}
                   <div className='prompt-box-button-container-contents'>
                     <div className="plus-button">
-                      +
+                    +
+                      <input type='file'
+                        style={{
+                          width: '30px',
+                          height: '35px',
+                          borderRadius: '20px',
+                          position: 'absolute',
+                          left: '0',
+                          top: '0',
+                          right: 0,
+                          bottom: 0,
+                          opacity: 0,
+                        }} />
                     </div>
                     <div className="new-canvas-button">
                       New Canvas
