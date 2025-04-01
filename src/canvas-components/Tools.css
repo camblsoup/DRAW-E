@@ -6,15 +6,6 @@
     gap: 5px;
 }
 
-.tools-bar:active{
-    display: flex;
-    flex-direction: column;
-    color: blueviolet;
-    
-
-    justify-content: space-between;
-    padding: 25px 15px;
-}
 
 .tool-btn {
     width: 70px;

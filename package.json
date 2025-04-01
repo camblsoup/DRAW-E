@@ -11,11 +11,14 @@
   },
   "dependencies": {
     "draw-e": "file:",
+    "jquery": "^3.7.1",
     "react": "^19.0.0",
+    "react-ajax": "^0.1.1",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@types/jquery": "^3.5.32",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",

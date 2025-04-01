@@ -1,4 +1,5 @@
 import ExitCanvasBtn from "./ExitCanvasBtn";
+import GetPromptBtn from "./GetPromptBtn";
 import "./Canvas.css";
 import { createContext, useEffect, useState } from "react";
 import { useRef } from "react";
@@ -95,8 +96,10 @@ export default function Canvas({setIsCanvasOpen, selectedTool }: Props) {
     return <>
         <div className="container">
             <canvas ref={canvasRef} className="drawing-canvas" />
-            <img id="AI-Img" src="" alt="No Img Generated"/>
+            {/* <img id="AI-Img" src="" alt="No Img Generated"/> */}
+        </div>
             <GetPromptBtn canvas={canvasRef}/>
+        <div>
         </div>
     </>
 }
