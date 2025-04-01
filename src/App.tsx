@@ -16,6 +16,7 @@ export default function App() {
         setSelectedTool={setSelectedTool}> 
 
         </RenderCanvas>
+        <img id={"generated-image"} alt={"Generated image placeholder"}/>
       </div>
     </>
 

@@ -5,6 +5,7 @@ import { useRef } from "react";
 // Source: https://www.youtube.com/watch?v=y84tBZo8GFo
 // soruce: https://stackoverflow.com/questions/64625367/is-there-a-way-to-use-canvas-to-draw-something-on-the-click-of-a-button-with-rea
 // Ref Documentation https://react.dev/reference/react/useRef
+// https://medium.com/@ksshravan667/14-days-of-react-day-5-react-hooks-usestate-useref-useeffect-usememo-usecallback-8599a14c4e2b
 interface Props {
     setIsCanvasOpen: (canvasState: Boolean) => Boolean;
     selectedTool: String;
@@ -65,6 +66,11 @@ export default function Canvas({setIsCanvasOpen, selectedTool }: Props) {
                 console.log("ERASER active");
                 console.log("clearReact()");
                 ctx.clearRect(e.offsetX, e.offsetY, 1, 1);
+            } else if (selectedTool == 'triangle'){
+                console.log("TRIANGLE active");
+                console.log("clearReact()");
+                ctx.lineTo(e.offsetX, e.offsetY); //: console.log("context is NULL (1)");
+                ctx.stroke();// : console.log("context is NULL (2)");
             }
         }
 
@@ -84,11 +90,13 @@ export default function Canvas({setIsCanvasOpen, selectedTool }: Props) {
             canvas.removeEventListener("mouseup", stopDraw);
             canvas.removeEventListener("mouseout", stopDraw);
         }
-    }, [isDrawing]);
+    }, [isDrawing,selectedTool]);
 
     return <>
         <div className="container">
             <canvas ref={canvasRef} className="drawing-canvas" />
+            <img id="AI-Img" src="" alt="No Img Generated"/>
+            <GetPromptBtn canvas={canvasRef}/>
         </div>
     </>
 }

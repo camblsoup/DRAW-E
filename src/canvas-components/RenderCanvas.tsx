@@ -16,6 +16,9 @@ import importBtn from "../assets/plus-button.svg";
 import downloadBtn from "../assets/download_button.svg";
 import searchIcon from "../assets/magnifying_glass.svg";
 
+import './RenderCanvas.css'
+import ToolBtn from './ToolBtn.tsx';
+import GetPromptBtn from './GetPromptBtn.tsx';
 interface Props {
     isCanvasOpen: Boolean;
     setIsCanvasOpen: (canvasState: Boolean) => Boolean;
@@ -66,6 +69,7 @@ export default function RenderCanvas({ isCanvasOpen, setIsCanvasOpen, selectedTo
                                 <div className='search-bar'>
                                     <img style={{ height: '20px', width: '20px', paddingRight: '10px' }} src={searchIcon} />
                                     Search Categories
+                                    
                                 </div>
                             </div>
                         </div>
