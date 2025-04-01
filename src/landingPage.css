@@ -47,7 +47,15 @@
   display: flex;
   flex-direction: row;
   gap: 10px;
+  width: fit-content;
+  cursor: pointer;
 }
+
+.profile-tabs:active {
+  color: #E5E5E5;
+}
+
+
 
 hr {
   color: white;
