@@ -1,14 +1,21 @@
-
-import './LandingPage.css'
+{/* LIBRARY */ }
 import { useState } from 'react'
 
+{/* STYLESHEETS*/ }
+import './LandingPage.css'
+
+{/* IMAGES*/ }
 import up_arrow from './assets/up_arrow2.svg'
 import logo2 from './assets/logo2.svg'
 import profile_icon from './assets/profile_button.svg'
-
+import settings_icon from './assets/settings.svg'
+import upgrade_icon from './assets/upgrade.svg'
+import logout_icon from './assets/logout.svg'
 
 function LandingPage() {
   const [promptText, setPromptText] = useState('')
+
+  /////////////////////////////////////////////////////////////////////////////
 
   const handlePrompt = () => {
     if (!promptText.trim()) {
@@ -19,14 +26,59 @@ function LandingPage() {
     //Call GPT API HERE
   };
 
+  /////////////////////////////////////////////////////////////////////////////
+
+  function showProfile(event) {
+    const profile = document.getElementById("totallyUniqueID");
+
+    if (!profile) {
+      return;
+    }
+    profile.style.display = "block";
+    event.stopPropagation();
+  }
+
+  function closeProfile(event) {
+    const profile = document.getElementById("totallyUniqueID");
+
+    if (profile && !profile.contains(event.target)) {
+      profile.style.display = "none";
+    }
+  }
+  document.addEventListener("click", closeProfile); // close profile tab when clicked off
+
+
   return (
     <>
       <div className="fit-width">
         {/* 1 */}
-        <div className="profile-icon-container">
-          <img src={profile_icon} />
+        {/* PROFILE ICON  */}
+        <div onClick={showProfile} className="profile-icon-container">
+          <img style={{ cursor: 'pointer', }} src={profile_icon} />
         </div>
-
+        {/* ON START UP: DISPLAY NONE | PROFILE  */}
+        <div id="totallyUniqueID" className="profile-container">
+          <div className="profile">
+            <div className="profile-content">
+              <div className="profile-icon">
+                <img src={profile_icon} />
+              </div>
+              <div className="profile-tabs">
+                <img src={settings_icon} />
+                <div>Settings</div>
+              </div>
+              <div className="profile-tabs">
+                <img src={upgrade_icon} />
+                <div>Upgrade</div>
+              </div>
+              <hr />
+              <div className="profile-tabs">
+                <img src={logout_icon} />
+                Log Out
+              </div>
+            </div>
+          </div>
+        </div>
         {/* 2 */}
         <div className="body">
           <div className="body-column-container">
@@ -71,7 +123,7 @@ function LandingPage() {
                   {/* the buttons on the left */}
                   <div className='prompt-box-button-container-contents'>
                     <div className="plus-button">
-                    +
+                      +
                       <input type='file'
                         style={{
                           width: '30px',
