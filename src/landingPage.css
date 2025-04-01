@@ -132,13 +132,16 @@
   color: white;
   border-radius: 50px;
   text-align: center;
+
   width: 30px;
-
   height: 30px;
-
-  font-size: 35px;
-
   line-height: 23px;
+
+  font-size: 31px;
+
+  position: relative;
+
+  cursor: pointer;
 }
 
 .plus-button:hover {
