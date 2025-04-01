@@ -1,14 +1,21 @@
+import { useRef } from "react";
+
+{/* STYLESHEETS */ }
 import './Canvas.css'
-import { MouseEvent } from "react";
-import { useState } from "react";
+import './RenderCanvas.css'
+
+
+{/* COMPONENTS */ }
 import OpenCanvasBtn from './OpenCanvasBtn.tsx';
 import Canvas from './Canvas.tsx';
-import { useRef } from "react";
 import ToolBar from './ToolBar.tsx';
-
 import ExitCanvasBtn from "./ExitCanvasBtn";
 
-import './RenderCanvas.css'
+{/* IMAGES */ }
+import importBtn from "../assets/plus-button.svg";
+import downloadBtn from "../assets/download_button.svg";
+import searchIcon from "../assets/magnifying_glass.svg";
+
 interface Props {
     isCanvasOpen: Boolean;
     setIsCanvasOpen: (canvasState: Boolean) => Boolean;
@@ -24,31 +31,41 @@ export default function RenderCanvas({ isCanvasOpen, setIsCanvasOpen, selectedTo
         <div>
             {isCanvasOpen ? (
                 <>
-                    {/* CANVAS POP-UP */}
-
-                    <div className='container'>
-                        {/* TOOLBAR SECTION */}
+                    <div className="popup-container">
                         <div className='tool-bar-container'>
-                            <ToolBar setSelectedTool={setSelectedTool} />
+                            <div className='tool-bar'>
+                                <ToolBar setSelectedTool={setSelectedTool} />
+                            </div>
                         </div>
 
-                        {/* CANVAS SECTION */}
+                        {/* SECTION 2: CANVAS SECTION */}
                         <div className='middle-section-container'>
                             {/* THE CANVAS */}
-                            <div>
+                            <div className='canvas'>
                                 <Canvas setIsCanvasOpen={setIsCanvasOpen} canvasRef={canvasRef} selectedTool={selectedTool} />
                             </div>
                             {/* PROMPT BOX SECTION */}
                             <div className='bottom-section-container'>
                                 {/* PROMPT BOX */}
                                 <div className='prompt-box-container'>
-                                    <div>
+                                    {/* IMPORT IMAGE BUTTON */}
+                                    <div import-button-container>
+                                        <img className='import-button' src={importBtn} />
                                     </div>
-                                    <textarea className='prompt-box-text'/>
+                                    <textarea className='prompt-box-text' placeholder="Ask anything" />
                                 </div>
                                 {/* SAVE BUTTON */}
                                 <div className='save-button-container'>
-                                    joe
+                                    <img className='save-button' src={downloadBtn} />
+                                </div>
+                            </div>
+                        </div>
+                        {/* SECTION 3: THE RIGHT SIDE STUFF */}
+                        <div className="assets-tab">
+                            <div className='search-bar-container'>
+                                <div className='search-bar'>
+                                    <img style={{ height: '20px', width: '20px', paddingRight: '10px' }} src={searchIcon} />
+                                    Search Categories
                                 </div>
                             </div>
                         </div>
