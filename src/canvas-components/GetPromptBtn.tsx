@@ -13,7 +13,7 @@ interface Props {
 let isClicked = false;
 export default function GetPromptBtn({ canvas }: Props) {
     function handleClick() {
-        //const ImageContext = createContext("image");
+        const { setBase64Image } = useContext(ImageContext);
         var dataURL = canvas.toDataURL(); //TODO ERROR HANDLING
         console.log(editImage("Image stuff goes here","This is a test prompt", true))
         //console.log(editImage(dataURL,"Can you enhance this part please?",false))
