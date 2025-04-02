@@ -102,8 +102,5 @@ export default function Canvas({setIsCanvasOpen, selectedTool }: Props) {
             <canvas ref={canvasRef} className="drawing-canvas" />
             {/* <img id="AI-Img" src="" alt="No Img Generated"/> */}
         </div>
-            <GetPromptBtn canvas={canvasRef}/>
-        <div>
-        </div>
     </>
 }

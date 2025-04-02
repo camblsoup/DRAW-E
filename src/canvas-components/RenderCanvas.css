@@ -29,6 +29,7 @@ body {
     border-radius: 20px;
     display: flex;
     flex-direction: row;
+    padding: 0px 10px;
 }
 
 .tool-bar {
@@ -73,6 +74,7 @@ body {
     width: 91%;
     border: none;
     line-height: 35px;
+    background-color: white;
 }
 
 .prompt-box-text:focus {
