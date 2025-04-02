@@ -8,18 +8,19 @@
 .tool-btn {
     width: 70px;
     height: 70px;
-    padding: 5px;
     background-color: #D9D9D9;
     border-radius: 20px;
+    display: flex;
+    justify-content: center;
+
+    cursor: pointer;
 }
 
 .tool-btn:active {
     width: 70px;
     height: 70px;
-    padding: 5px;
     border-radius: 20px;
-
-    background-color: #757575;
+    background-color: #cacaca;
     border: none;
 }
 
@@ -46,6 +47,7 @@
 .hidden-tools-container {
     background-color: #D9D9D9;
     border-radius: 20px;
+    position: relative;
 }
 
 .hidden-tools {
@@ -56,6 +58,8 @@
     z-index: 1;
     display: flex;
     overflow: hidden;
-}
+    margin: 0px;
 
+    
+}
 

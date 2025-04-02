@@ -80,7 +80,7 @@ export default function RenderCanvas({ isCanvasOpen, setIsCanvasOpen, selectedTo
                 )}
             {/* CLOSE CANVAS BUTTON */}
             <div className='exit-canvas-button'>
-                <GetPromptBtn canvas={canvasRef} />
+                <GetPromptBtn canvas={canvasRef.current} />
                 <ExitCanvasBtn setIsCanvasOpen={setIsCanvasOpen} />
             </div>
         </div>

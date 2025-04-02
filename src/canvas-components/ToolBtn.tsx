@@ -7,22 +7,25 @@ import ExpandedTool from "./ExpandedTool";
 import { useRef, useEffect, useState } from "react"
 
 interface Props {
+    isExpandable: Boolean;
     toolName: String;
     setSelectedTool: (tool: String) => String;
 }
 
-export default function ToolBtn({ toolName, setSelectedTool }: Props) {
+export default function ToolBtn({isExpandable ,toolName, setSelectedTool }: Props) {
     const [isClicked, setIsClicked] = useState(false);
     let btnRef = useRef<HTMLButtonElement | null>(null);
+    //button.hidePopover(); //helpppp
+    //button?.classList.toggle(`popover-${toolName}`); //helpppp
 
     console.log(toolName)
     useEffect(() => {
-        const button = btnRef.current;
-        console.log("current Ref:" + button);
         
-        
-        button?.classList.toggle(`popover-${toolName}`); //helpppp
-        setIsClicked(false);
+            const button = btnRef.current;
+            console.log("current Ref:" + button);
+            if(isClicked){
+            button?.classList.toggle(`popover-${toolName}`); //helpppp
+        }
     }, [isClicked]);
     
     function handleClick(e: MouseEvent | HTMLButtonElement) {
@@ -41,5 +44,6 @@ export default function ToolBtn({ toolName, setSelectedTool }: Props) {
                 <GetImg altText={toolName} />
             </button>
         </div>
+        
     </>
 }

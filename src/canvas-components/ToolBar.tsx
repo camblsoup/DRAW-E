@@ -12,6 +12,10 @@ interface Props {
 
 export default function ToolBar({ selectedTool, setSelectedTool }: Props) {
 
+    const [activeTool, setActiveTool] = useState<string | null>(null);
+
+    const [hiddenTools, setHiddenTools] = useState(false);
+
     // [main tool type [tools, in, expanded, menu]] 
     // NOTE: THE NAMES MUST MATCH THE .svg FILE NAME
     const toolTypes = [
@@ -25,23 +29,37 @@ export default function ToolBar({ selectedTool, setSelectedTool }: Props) {
         ['redo']
     ];
 
-    //const [isExpanded, setIsExpanded] = useState(false); // state hook
+    function expandTools(event) {
+        const expansion = document.getElementById(`popover-${theTool[0]}`);
+
+        expansion.style.display = "block";
+        event.stopPropagation();
+
+    }
+
     console.log(toolTypes);
-    return <div className="tools-bar">
-        {toolTypes.map((theTool) => (
-            <>
-                <div className="tool-expand">
-                    <ToolBtn toolName={theTool[0]} setSelectedTool={setSelectedTool} key={theTool[0]} />
-                    {theTool[1] ? (<div className="hidden-tools" id={`popover-${theTool[0]}`} popover="auto">
-                        <ExpandedTool setSelectedTool={setSelectedTool} subTypes={theTool[1]} />
+    return (
+        <div className="tools-bar">
+            {/* TOOL ON THE TOOL BAR */}
+            {toolTypes.map((theTool) => (
+                <div key={theTool[0]} className="joe">
+                    {/* TOOL ON THE TOOL BAR */}
+                    <ToolBtn
+                        isExpandable={true}
+                        toolName={theTool[0]}
+                        className="selected-tool"
+                        setSelectedTool={setSelectedTool}
+                    />
+
+                    {/* HIDDEN PORTION */}
+                    {theTool[1] ? (<div className="hidden-tools" id={`popover-${theTool[0]}`} >
+                        < ExpandedTool popover="auto" setSelectedTool={setSelectedTool} subTypes={theTool[1]} />
                     </div>) :
-                        <>
-                        </>
+                        null
                     }
                 </div>
-            </>
-        ))}
+            ))}
 
-    </div>
-
+        </div>
+    );
 }
