@@ -1,8 +1,9 @@
 // https://stackoverflow.com/questions/923885/capture-html-canvas-as-gif-jpg-png-pdf
 // https://stackoverflow.com/questions/41957490/send-canvas-image-data-uint8clampedarray-to-flask-server-via-ajax
 
-import { createContext, RefObject, useRef } from "react";
+import { useContext, RefObject, useRef } from "react";
 import { editImage } from "./../GPT.tsx"
+import { ImageContext } from "./../ImageContext"
 
 
 interface Props {
