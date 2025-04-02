@@ -7,7 +7,8 @@ interface Props{
 }
 
 export default function ExpandedTool({setSelectedTool, subTypes}: Props){
-
+    
+    console.log("subtypes== " + subTypes)
     return<>
             {subTypes.map((subTool)=> (<ToolBtn toolName={subTool} setSelectedTool={setSelectedTool} key={subTool} /> ))}
     </>

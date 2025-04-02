@@ -45,4 +45,14 @@
     max-height: 70px;
     flex-direction: row;
     display: flex;
+    z-index: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+.hidden-tools :active{
+    width: flex;
+    flex-direction: row;
+    display:flex;
+    overflow: visible;
 }

@@ -6,7 +6,7 @@ import RenderCanvas from './canvas-components/RenderCanvas.tsx';
 
 export default function App() {
   const [isCanvasOpen, setIsCanvasOpen] = useState(false); // state hook
-  const [selectedTool, setSelectedTool] = useState("brush"); // state hook
+  const [selectedTool, setSelectedTool] = useState("pencil"); // state hook
   return <>
     <div>
         <RenderCanvas 

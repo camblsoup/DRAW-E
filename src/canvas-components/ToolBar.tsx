@@ -13,7 +13,7 @@ interface Props{
 export default function ToolBar({selectedTool, setSelectedTool} : Props){
     
     const toolTypes = [
-        ['pencil',[]],
+        ['pencil',['brush','pen']],
         ['eraser',[]],
         ['laso',['circle-laso']],
         ['square',['circle','triangle']],
@@ -29,8 +29,8 @@ export default function ToolBar({selectedTool, setSelectedTool} : Props){
             {toolTypes.map((selectedTool)=> (
                     <>
                      <div className="tool-expand"> 
-                        <ToolBtn toolName={selectedTool[0]} setSelectedTool={setSelectedTool} key={selectedTool[0]}/> 
-                        <div className="hidden-tools">
+                        <ToolBtn toolName={selectedTool[0]} setSelectedTool={setSelectedTool} key={selectedTool[0]}/>
+                        <div className="hidden-tools" id={`popover-${selectedTool[0]}`} popover="manual"> 
                             <ExpandedTool setSelectedTool={setSelectedTool} subTypes={selectedTool[1]}></ExpandedTool>
                         </div>
                     </div> 
