@@ -18,6 +18,8 @@ export default function Canvas({setIsCanvasOpen, selectedTool }: Props) {
     
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const isDrawing = useRef(false);
+    let prevMouseX : number 
+    let prevMouseY:number;
     //REQUIRED?!? WTF!
     console.log(canvasRef);
     useEffect(() => {
@@ -45,6 +47,8 @@ export default function Canvas({setIsCanvasOpen, selectedTool }: Props) {
         });
 
         const startDraw = (e: MouseEvent) => {
+            prevMouseX = e.offsetX
+            prevMouseY = e.offsetY
             isDrawing.current = true;
             ctx.beginPath();
             ctx.moveTo(e.offsetX, e.offsetY);
@@ -67,11 +71,11 @@ export default function Canvas({setIsCanvasOpen, selectedTool }: Props) {
                 console.log("ERASER active");
                 console.log("clearReact()");
                 ctx.clearRect(e.offsetX, e.offsetY, 1, 1);
-            } else if (selectedTool == 'triangle'){
-                console.log("TRIANGLE active");
-                console.log("clearReact()");
+            } else if (selectedTool == 'square'){
+                let sqr_size = 1;
+                console.log("SQUARE  active");
                 ctx.lineTo(e.offsetX, e.offsetY); //: console.log("context is NULL (1)");
-                ctx.stroke();// : console.log("context is NULL (2)");
+                ctx.strokeRect(e.offsetX,e.offsetY,e.offsetX-prevMouseX,e.offsetY-prevMouseY);// : console.log("context is NULL (2)");
             }
         }
 

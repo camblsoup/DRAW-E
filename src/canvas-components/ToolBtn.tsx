@@ -1,6 +1,7 @@
 // js import() documentation: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import
 import GetImg from "./GetImg";
-import ToolImg from "./GetImg";
+import ExpandedTool from "./ExpandedTool";
+
 
 interface Props {
     toolName: String;
@@ -11,19 +12,7 @@ export default function ToolBtn({ toolName, setSelectedTool }: Props) {
     const fileName =  toolName  + ".svg";
     const imgPath = "../assets/" + fileName;
 
-    let icon = "";
-    let theImg = "";
-
-    try {
-        const icon = require(imgPath);
-        //icon.then((img) => theImg=img);
-        console.log(toolName + " Icon:");
-        console.log(icon);
-
-    } catch (e) {
-        console.log("img path is not called");
-    }
-
+    console.log(toolName)
     function handleClick() {
         setSelectedTool(toolName);
         console.log(toolName + " SET! ");

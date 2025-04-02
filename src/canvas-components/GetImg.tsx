@@ -11,6 +11,7 @@ import pen from "../assets/pen.svg";
 import redo from "../assets/undo.svg";
 import undo from "../assets/redo.svg";
 import triangle from "../assets/triangle.svg";
+import circle from "../assets/circle.svg";
 import download from "../assets/download.svg";
 import imgNotFound from "../assets/imgNotFound.svg";
 
@@ -60,6 +61,9 @@ export default function GetImg({altText}: Props){
         case "triangle":
             img = triangle;
             break;
+        case "circle":
+                img = circle;
+                break;
         case "download":
             img = download;
             break;
