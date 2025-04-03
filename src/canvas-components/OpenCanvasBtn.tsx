@@ -1,13 +1,16 @@
-interface Props{
-    setIsCanvasOpen: (canvasState: Boolean) => Boolean;
+interface Props {
+    setIsCanvasOpen: (canvasState: Boolean) => void;
 }
 
-export default function OpenCanvasBtn({setIsCanvasOpen}: Props){
+export default function OpenCanvasBtn({ setIsCanvasOpen }: Props) {
 
-    function handleClick(){
+    function handleClick() {
         setIsCanvasOpen(true);
     }
 
-    return (<button className="new-canvas-button-main" onClick={handleClick}> NEW CANVAS </button>);
+    return (
+        <button className="new-canvas-button-main" onClick={handleClick}> NEW CANVAS
+        </button>
+    );
 }
 

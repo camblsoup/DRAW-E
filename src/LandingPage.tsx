@@ -11,16 +11,15 @@ import profile_icon from './assets/profile_button.svg'
 import settings_icon from './assets/settings.svg'
 import upgrade_icon from './assets/upgrade.svg'
 import logout_icon from './assets/logout.svg'
+
+{/* COMPONENTS */ }
 import OpenCanvasBtn from './canvas-components/OpenCanvasBtn'
 import { generateImage } from './GPT'
+import RenderCanvas from './canvas-components/RenderCanvas.tsx';
 
-interface Props {
-  setIsCanvasOpen: (tool: String) => String;
-}
-
-function LandingPage({ setIsCanvasOpen }: Props) {
-  const [promptText, setPromptText] = useState('')
-
+function LandingPage() {
+  const [isCanvasOpen, setIsCanvasOpen] = useState(false);
+  const [promptText, setPromptText] = useState('');
 
   /////////////////////////////////////////////////////////////////////////////
 
@@ -55,8 +54,7 @@ function LandingPage({ setIsCanvasOpen }: Props) {
       profile.style.display = "none";
     }
   }
-  document.addEventListener("click", closeProfile); // close profile tab when clicked off
-
+  document.addEventListener("click", closeProfile);
 
   return (
     <>
@@ -70,11 +68,8 @@ function LandingPage({ setIsCanvasOpen }: Props) {
         <div id="totallyUniqueID" className="profile-container">
           <div className="profile">
             <div className="profile-content">
-              <div className="profile-icon">
-                <img src={profile_icon} />
-              </div>
-              <div className="profile-tabs">
-                <img src={settings_icon} />
+              <div className="profile-icon"><img src={profile_icon} /></div>
+              <div className="profile-tabs"><img src={settings_icon} />
                 <div>Settings</div>
               </div>
               <div className="profile-tabs">
@@ -95,23 +90,21 @@ function LandingPage({ setIsCanvasOpen }: Props) {
             <div>
               <img style={{ width: '5vw' }} src={logo2} />
             </div>
-            <div className="program-name">
-              DRAW-E
-            </div>
-            <div >
-              By Team 10
-            </div>
-            <div>
-              Let me turn your imagination into imagery!
-            </div>
+            <div className="program-name">DRAW-E</div>
+            <div>By Team 10</div>
+            <div>Let me turn your imagination into imagery!</div>
             <div>
               <div>
-                <OpenCanvasBtn className="new-canvas-button-main" setIsCanvasOpen={setIsCanvasOpen} />
+                <OpenCanvasBtn setIsCanvasOpen={setIsCanvasOpen} />
+                {isCanvasOpen && (
+                  <div className="canvas-popup">
+                    <RenderCanvas setIsCanvasOpen={setIsCanvasOpen} />
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
-
         {/* 3 */}
         <div className="three-container">
           {/* positioning for input box and button*/}
@@ -124,7 +117,6 @@ function LandingPage({ setIsCanvasOpen }: Props) {
               </form>
               {/* the buttons container*/}
               <div className='prompt-box-button-container'>
-
                 {/* the buttons container, left side positioning */}
                 <div className='prompt-box-button-container-left'>
                   {/* the buttons on the left */}
