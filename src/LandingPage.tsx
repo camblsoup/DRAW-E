@@ -30,9 +30,9 @@ function LandingPage() {
     }
     console.log('Generating user image....', promptText)
     //change to false when ready
-    let imageurl = generateImage(promptText, true)
+    let imageurl = generateImage(promptText, false)
     console.log(imageurl)
-    //Call GPT API HERE
+
   };
 
   /////////////////////////////////////////////////////////////////////////////

@@ -3,6 +3,7 @@
 
 import { useContext, RefObject, useRef, useEffect, useState } from "react";
 import { editImage, getImageDescription } from "./../GPT.tsx"
+import { editImage, getImageDescription } from "./../GPT.tsx"
 import { ImageContext } from "./../ImageContext"
 
 import up_arrow from '../assets/up_arrow2.svg'
@@ -86,10 +87,31 @@ export default function GetPromptBtn({ canvasRef }: Props) {
             editImage(blob, "Can you enhance this part please?", true)
                 .then(response => console.log("editImage Response:", response))
                 .catch(error => console.error("editImage Error:", error));
+>>>>>>> origin/popup
         }, "image/png");
     }
 
     return (
+<<<<<<< HEAD
+        <button onClick={handleClick} disabled={isClicked}>
+            Generate Image
+        </button>
+    );
+
+
+    // {isClicked?(
+    //     <div>
+    //         <img src = {canvas.toDataURL('image/png')}> </img>
+    //     </div>
+    //     ):(
+    //         <div>
+    //             <button onClick={handleClick}>
+    //                 generate image
+    //             </button>
+    //         </div>
+    //     )
+    // }
+=======
         <div className='generate-image-button-style' onClick={handleClick}>
             <img className='generate-image-button' src={up_arrow} />
         </div>
