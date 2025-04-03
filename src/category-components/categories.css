@@ -1,0 +1,68 @@
+.categories-container {
+  border-top: 1px solid #898989;
+  border-bottom: 1px solid #898989;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 65vh;
+
+}
+
+/***********************************************/
+.tab-container {
+  border-top: 1px solid #898989;
+  border-bottom: 1px solid #898989;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.tab {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+
+#expandBtn {
+  width: 20px;
+}
+
+/****************************************************/
+
+.tab-expanded-container {
+  padding: 10px;
+  width: 100%;
+}
+
+#filters_content_ID,
+#background_content_ID,
+#draganddrop_ID,
+#assets_ID {
+  display: none;
+}
+
+.tab-content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+  width: fit-content;
+}
+
+.bird-image {
+  height: 130px;
+  width: 150px;
+  border-radius: 20px;
+}
+
+.background-image {
+  height: 140px;
+  width: 140px;
+}
