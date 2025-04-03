@@ -5,5 +5,5 @@ DRAW-E is a program inspired by ChatGPT's DALL-E function. It builds off the ima
 ## TO RUN
 
 Be sure to have the following libraries installed:
-npm install
-npm install openai
+* npm install
+* npm install openai
