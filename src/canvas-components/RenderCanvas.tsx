@@ -8,6 +8,7 @@ import './RenderCanvas.css'
 import Canvas from './Canvas.tsx';
 import ToolBar from './ToolBar.tsx';
 import GetPromptBtn from './GetPromptBtn.tsx';
+import Categories from '../category-components/categories.tsx';
 
 {/* IMAGES */ }
 import importBtn from "../assets/plus-button.svg";
@@ -18,7 +19,7 @@ import Sidebar from "../Sidebar.tsx";
 
 interface RenderCanvasProps {
     setIsCanvasOpen: (isOpen: boolean) => void;
-    isCanvasOpen: boolean;  
+    isCanvasOpen: boolean;
 }
 
 export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
@@ -59,6 +60,9 @@ export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
                             <div className='search-bar-render'>
                                 <img style={{ height: '20px', width: '20px', paddingRight: '10px' }} src={searchIcon} />
                                 <textarea className='search-bar-text-render' placeholder="Search Categories"></textarea>
+                            </div>
+                            <div>
+                                <Categories></Categories>
                             </div>
                         </div></div>
                     </div>
