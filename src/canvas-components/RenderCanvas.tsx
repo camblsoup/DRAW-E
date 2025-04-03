@@ -1,9 +1,8 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 {/* STYLESHEETS */ }
 import './Canvas.css'
 import './RenderCanvas.css'
-
 
 {/* COMPONENTS */ }
 import OpenCanvasBtn from './OpenCanvasBtn.tsx';
@@ -17,23 +16,19 @@ import GetPromptBtn from './GetPromptBtn.tsx';
 import importBtn from "../assets/plus-button.svg";
 import downloadBtn from "../assets/download_button.svg";
 import searchIcon from "../assets/magnifying_glass.svg";
+import LandingPage from "../LandingPage.tsx";
+import Sidebar from "../Sidebar.tsx";
 
-interface Props {
-    isCanvasOpen: Boolean;
-    setIsCanvasOpen: (canvasState: Boolean) => Boolean;
-    selectedTool: String;
-    setSelectedTool: (tool: String) => String;
-}
-
-export default function RenderCanvas({ isCanvasOpen, setIsCanvasOpen, selectedTool, setSelectedTool }: Props) {
-
+export default function RenderCanvas() {
+    const [isCanvasOpen, setIsCanvasOpen] = useState(false); // state hook
+    const [selectedTool, setSelectedTool] = useState("pencil"); // state hook
     const canvasRef = useRef(null);
 
     return <>
         <div>
             {isCanvasOpen ? (
                 <>
-                    <div className="popup-container">
+                    <div>
                         <div className='tool-bar-container'>
                             <div className='tool-bar'>
                                 <ToolBar setSelectedTool={setSelectedTool} />
@@ -43,13 +38,13 @@ export default function RenderCanvas({ isCanvasOpen, setIsCanvasOpen, selectedTo
                         {/* SECTION 2: CANVAS SECTION */}
                         <div className='middle-section-container'>
                             {/* THE CANVAS */}
-                            <div className='canvas'>
-                                <Canvas setIsCanvasOpen={setIsCanvasOpen} canvasRef={canvasRef} selectedTool={selectedTool} />
+                            <div className='canvas-container'>
+                                <Canvas setIsCanvasOpen={setIsCanvasOpen} canvasRef={canvasRef} selectedTool={selectedTool}/>
                             </div>
                             {/* PROMPT BOX SECTION */}
                             <div className='bottom-section-container'>
                                 {/* PROMPT BOX */}
-                                <div className='prompt-box-container'>
+                                <div className='prompt-box-container-render'>
                                     {/* IMPORT IMAGE BUTTON */}
                                     <div import-button-container>
                                         <img className='import-button' src={importBtn} />
@@ -72,19 +67,21 @@ export default function RenderCanvas({ isCanvasOpen, setIsCanvasOpen, selectedTo
                                 </div>
                             </div>
                         </div>
+                        {/* CLOSE CANVAS BUTTON */}
+                        <div className='exit-canvas-button'>
+                            <GetPromptBtn canvas={canvasRef.current} />
+                            <ExitCanvasBtn setIsCanvasOpen={setIsCanvasOpen} />
+                        </div>
                     </div>
                 </>)
                 : (
                     // OPEN CANVAS BUTTON
-                    <OpenCanvasBtn setIsCanvasOpen={setIsCanvasOpen} />
+                    <>
+                        <Sidebar />
+                        <LandingPage setIsCanvasOpen={setIsCanvasOpen}/>
+                    </>
                 )}
-            {/* CLOSE CANVAS BUTTON */}
-            <div className='exit-canvas-button'>
-                <GetPromptBtn canvas={canvasRef.current} />
-                <ExitCanvasBtn setIsCanvasOpen={setIsCanvasOpen} />
-            </div>
+
         </div>
     </>
-
-
 }

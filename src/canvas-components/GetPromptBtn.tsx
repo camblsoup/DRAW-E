@@ -10,14 +10,26 @@ interface Props {
     canvas: HTMLCanvasElement;
     //canvasRef: typeof useRef;
 }
-let isClicked = false;
+
 export default function GetPromptBtn({ canvas }: Props) {
     function handleClick() {
-        const { setBase64Image } = useContext(ImageContext);
-        var dataURL = canvas.toDataURL(); //TODO ERROR HANDLING
-        console.log(editImage("Image stuff goes here","This is a test prompt", true))
-        //console.log(editImage(dataURL,"Can you enhance this part please?",false))
-        isClicked = true;
+        if (!canvas) {
+            console.error("Canvas element is missing");
+            return;
+        }
+        
+        canvas.toBlob((blob) => {
+            if (!blob) {
+                console.error("Failed to convert canvas to the \'Blob\'");
+                return;
+            }
+
+            console.log("Sending PNG image to editImage");
+            //replace second 
+            editImage(blob, "Can you enhance this part please?", true)
+                .then(response => console.log("editImage Response:", response))
+                .catch(error => console.error("editImage Error:", error));
+        }, "image/png");
 
         //document.getElementById('AI-img').src = img;
         //var dataURL = canvas.toDataURL("image/png");

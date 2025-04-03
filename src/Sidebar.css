@@ -29,7 +29,6 @@
 .icon {
     min-width: 30px;
     min-height: 25px;
-
     width: 10%;
 }
 
@@ -39,11 +38,9 @@
 
 /***********************************************/
 
-.search-bar-container {
+.search-bar-container-sidebar {
     padding: 10px 15px;
-
     background-color: #E6E6E6;
-
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -54,23 +51,19 @@
 .icon2 {
     min-width: 10px;
     min-height: 10px;
-
     color: #6B6B6B;
-
     width: 15px;
     height: 25px;
 }
 
-.search-bar {
+.search-bar-sidebar {
     background: none;
     border: none;
-
     font-size: 16px;
-
     width: 80%;
 }
 
-.search-bar:focus {
+.search-bar-sidebar:focus {
     border: none;
     outline: none;
 }
@@ -80,15 +73,12 @@
 .new-project-button {
     padding: 10px;
     background-color: #E6E6E6;
-
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 10px;
     border-radius: 15px;
-
     line-height: 28px;
-
     color: black;
 }
 

@@ -8,6 +8,6 @@ export default function OpenCanvasBtn({setIsCanvasOpen}: Props){
         setIsCanvasOpen(true);
     }
 
-    return (<button onClick={handleClick}> NEW CANVAS </button>);
+    return (<button className="new-canvas-button-main" onClick={handleClick}> NEW CANVAS </button>);
 }
 

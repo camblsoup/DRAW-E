@@ -68,11 +68,8 @@ hr {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   margin: 10%;
-
   text-align: center;
-
   gap: 10px;
 }
 
@@ -84,11 +81,9 @@ hr {
 .new-canvas-button-main {
   background-color: #1A3B42;
   color: white;
-  padding: 10px 20px;
-
+  padding: 5px 20px;
   border-radius: 20px;
-
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .new-canvas-button-main:hover {
@@ -101,9 +96,7 @@ hr {
 
 /** 3 **/
 .three-container {
-  height: 25vh;
   width: 100vw;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -114,24 +107,27 @@ hr {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   width: 80%;
-  height: 100%;
-
   gap: 20px;
 
+}
+
+.prompt-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid #E5E5E5;
+  border-radius: 20px;
+  padding: 10px;
 }
 
 .prompt-box-text {
   width: 60vw;
   height: 90%;
-
   border: none;
   outline: none;
-
   resize: none;
   padding: 10px;
-
   background: none;
 }
 
@@ -146,17 +142,6 @@ hr {
   padding-top: 10px;
 }
 
-.prompt-box {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-  border: 1px solid #E5E5E5;
-  border-radius: 20px;
-
-  padding: 10px;
-}
-
 .prompt-box-button-container-left {
   display: flex;
   align-items: left;
@@ -167,7 +152,6 @@ hr {
 .prompt-box-button-container-contents {
   display: flex;
   flex-direction: row;
-
   gap: 5px;
 }
 
@@ -176,15 +160,11 @@ hr {
   color: white;
   border-radius: 50px;
   text-align: center;
-
   width: 30px;
   height: 30px;
   line-height: 23px;
-
   font-size: 31px;
-
   position: relative;
-
   cursor: pointer;
 }
 
@@ -198,7 +178,6 @@ hr {
   width: 140px;
   text-align: center;
   line-height: 27px;
-
   border-radius: 20px;
 }
 
@@ -231,21 +210,19 @@ hr {
   bottom: 0;
   width: 100%;
   text-align: center;
-
   padding-bottom: 5px;
-
   font-size: 12px;
 }
 
 .warning {
   margin-top: 10px;
-  font-size: 1vw;
+  font-size: 12px;
 }
 
 .FAQ-container {
   position: absolute;
   right: 0;
   bottom: 0;
-
   padding: 10px 20px;
+  margin: 10px;
 }

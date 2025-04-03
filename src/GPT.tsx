@@ -45,15 +45,18 @@ export async function generateImage(prompt: string, testing: boolean) {
 
 //First input is the image url to be described
 //Second is the testing boolean, True indicates testing
-export async function getImageDescription(imageUrl: string, testing: boolean) {
+export async function getImageDescription(imageBlob: string, testing: boolean) {
+    // testing mode
     if (testing) {
         console.log("Testing image description")
-        return "This is a test image description"
+        return "Image desctiption test complete"
     }
-    if (!imageUrl) {
+    //if no image given
+    if (!imageBlob) {
         console.log("No image url provided")
         return "No image url provided"
     }
+    //build the response
     const response = await openai.chat.completions.create({
         model: "gpt-40-mini",
         messages: [{
@@ -62,7 +65,7 @@ export async function getImageDescription(imageUrl: string, testing: boolean) {
                 { type: "text", text: "Can you describe this image in detail?"},
                 {
                     type: "image_url",
-                    image_url: {url: imageUrl,}
+                    image_url: {url: imageBlob,}
                 },
             ],
 
@@ -73,8 +76,32 @@ export async function getImageDescription(imageUrl: string, testing: boolean) {
 
 
 
-export async function editImage(imageUrl: string, prompt: string, testing: boolean) {
+export async function editImage(imageBlob: Blob, prompt: string, testing: boolean) {
+    if (testing) {
+        console.log("Testing image editing with backend");
+        return "editImage testing complete";
+    }
 
-    return "editImage function called"
+    const formData = new FormData();
+    formData.append("image", imageBlob, "image.png");
+    formData.append("prompt", prompt);
+
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: apiUrl + "/edit",
+            type: "POST",
+            data: formData,
+            processData: false, // Important: Prevent jQuery from processing FormData
+            contentType: false, // Important: Let the browser set the content type
+            success: function(response) {
+                console.log("Image edited successfully:", response);
+                resolve(response);
+            },
+            error: function(xhr, status, error){
+                console.error("editImage error:", error);
+                reject(error);
+            }
+        });
+    });
 }
 

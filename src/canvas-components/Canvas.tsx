@@ -10,18 +10,18 @@ import { useRef } from "react";
 interface Props {
     setIsCanvasOpen: (canvasState: Boolean) => Boolean;
     selectedTool: String;
-    //canvasRef: typeof useRef;
+    canvasRef: typeof useRef;
 }
 
-export default function Canvas({setIsCanvasOpen, selectedTool }: Props) {
+export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef }: Props) {
     //let isDrawing = false;
     
-    const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const isDrawing = useRef(false);
     let prevMouseX : number 
     let prevMouseY:number;
     //REQUIRED?!? WTF!
     console.log(canvasRef);
+
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;

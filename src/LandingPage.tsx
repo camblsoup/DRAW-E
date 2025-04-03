@@ -11,9 +11,15 @@ import profile_icon from './assets/profile_button.svg'
 import settings_icon from './assets/settings.svg'
 import upgrade_icon from './assets/upgrade.svg'
 import logout_icon from './assets/logout.svg'
+import OpenCanvasBtn from './canvas-components/OpenCanvasBtn'
 
-function LandingPage() {
+interface Props {
+  setIsCanvasOpen: (tool: String) => String;
+}
+
+function LandingPage({ setIsCanvasOpen }: Props) {
   const [promptText, setPromptText] = useState('')
+
 
   /////////////////////////////////////////////////////////////////////////////
 
@@ -83,7 +89,7 @@ function LandingPage() {
         <div className="body">
           <div className="body-column-container">
             <div>
-              <img style={{ width: '10vw' }} src={logo2} />
+              <img style={{ width: '5vw' }} src={logo2} />
             </div>
             <div className="program-name">
               DRAW-E
@@ -95,11 +101,10 @@ function LandingPage() {
               Let me turn your imagination into imagery!
             </div>
             <div>
-              <div className="new-canvas-button-main">
-                Create a new canvas
+              <div>
+                <OpenCanvasBtn className="new-canvas-button-main" setIsCanvasOpen={setIsCanvasOpen} />
               </div>
             </div>
-
           </div>
         </div>
 
@@ -107,10 +112,8 @@ function LandingPage() {
         <div className="three-container">
           {/* positioning for input box and button*/}
           <div className="prompt-box-container">
-
             {/* input box and buttons*/}
             <div className="prompt-box">
-
               {/* text box*/}
               <form>
                 <textarea className="prompt-box-text" placeholder='Ask me to draw something!' value={promptText} onChange={(e) => setPromptText(e.target.value)} />
@@ -138,7 +141,7 @@ function LandingPage() {
                         }} />
                     </div>
                     <div className="new-canvas-button">
-                      New Canvas
+                      <OpenCanvasBtn setIsCanvasOpen={setIsCanvasOpen} />
                     </div>
                   </div>
                 </div>

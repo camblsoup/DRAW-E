@@ -43,9 +43,9 @@ function Sidebar() {
           <img style={{ width: "85%", padding: "15px 0px", }} src={logo}  alt={"Draw-E logo"}/>
 
           {/* Search Button */}
-          <div className="search-bar-container">
+          <div className="search-bar-container-sidebar ">
             <img className="icon2" src={magnifying_glass}  alt={"Search icon"}/>
-            <input className="search-bar" type="text" placeholder="Search"></input>
+            <input className="search-bar-sidebar" type="text" placeholder="Search"></input>
           </div>
 
           {/* New Project Button*/}
