@@ -11,9 +11,10 @@ interface Props {
     setIsCanvasOpen: (canvasState: Boolean) => Boolean;
     selectedTool: String;
     canvasRef: RefObject<HTMLCanvasElement | null>;
+    imgContainerRef: RefObject<HTMLCanvasElement | null>;
 }
 
-export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef }: Props) {
+export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef,imgContainerRef }: Props) {
     //let isDrawing = false;
     
     const isDrawing = useRef(false);
@@ -24,6 +25,7 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef }: Prop
 
     useEffect(() => {
         const canvas = canvasRef.current;
+        const imgCanvas = canvasRef.current;
         if (!canvas) return;
         //CanvasRenderingContext2D Documentation: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
         canvas.width = window.innerWidth * 0.7; // 70% of the screen width
@@ -98,9 +100,9 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef }: Prop
     }, [isDrawing,selectedTool]);
 
     return <>
-        <div className="container">
-            <canvas ref={canvasRef} className="drawing-canvas" />
-            {/* <img id="AI-Img" src="" alt="No Img Generated"/> */}
+        <div id = "canvas-wrapper">
+            <canvas ref={canvasRef} className="drawing-canvas" id="drawContainer" />
+            
         </div>
     </>
 }

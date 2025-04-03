@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 {/* STYLESHEETS */ }
 import './Canvas.css'
 import './RenderCanvas.css'
+import './style/ImgAICanvas.css';
 
 {/* COMPONENTS */ }
 import Canvas from './Canvas.tsx';
@@ -16,6 +17,7 @@ import downloadBtn from "../assets/download_button.svg";
 import searchIcon from "../assets/magnifying_glass.svg";
 import LandingPage from "../LandingPage.tsx";
 import Sidebar from "../Sidebar.tsx";
+import ImgAICanvas from "./ImgAICanvas.tsx";
 
 interface RenderCanvasProps {
     setIsCanvasOpen: (isOpen: boolean) => void;
@@ -24,7 +26,9 @@ interface RenderCanvasProps {
 
 export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
     const [selectedTool, setSelectedTool] = useState("pencil"); // state hook
+    const [isImgGenerated, setIsImgGenerated] = useState(false); // state hook
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
+    const imgContainerRef = useRef<HTMLImageElement | null>(null);
 
     return <>
         <div>
@@ -43,6 +47,9 @@ export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
                             {/* THE CANVAS */}
                             <div className='canvas-container'>
                                 <Canvas setIsCanvasOpen={setIsCanvasOpen} canvasRef={canvasRef} selectedTool={selectedTool} />
+                            </div>
+                            <div className="AI-component">
+                                <ImgAICanvas setIsImgGenerated={setIsImgGenerated} canvasRef={imgContainerRef} isImgGenerated={isImgGenerated} className="AI-img-wrapper"/>
                             </div>
                             {/* PROMPT BOX SECTION */}
                             <div className='bottom-section-container'>
