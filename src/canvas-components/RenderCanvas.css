@@ -5,16 +5,35 @@
     justify-content: center;
 }
 
+body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+}
+
+.opacity-fr {
+    position: fixed;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
 .popup-container {
     display: flex;
     flex-direction: row;
-    width: 90vw;
     gap: 10px;
     justify-content: center;
-    position: fixed;
+
+    z-index: 1000;
     top: 50%;
     left: 50%;
-    z-index: 1000;
+    position: fixed;
+    transform: translate(-50%, -50%);
 }
 
 /*****************************************************************************/
@@ -38,14 +57,14 @@
 /*****************************************************************************/
 
 .middle-section-container {
-    display:flex;
+    display: flex;
     flex-direction: column;
     background-color: white;
     height: 70vh;
     border-radius: 20px;
     min-height: 750px;
     width: 1000px;
-    
+
 }
 
 .bottom-section-container {
@@ -70,7 +89,7 @@
 }
 
 /* PROMPT TEXT */
-.prompt-box-text {
+.prompt-box-text-render {
     resize: none;
     width: 91%;
     border: none;
@@ -78,10 +97,16 @@
     background-color: white;
 }
 
-.prompt-box-text:focus {
+.prompt-box-text-render:focus {
     color: back;
     border: none;
     outline: none;
+}
+
+.generate-image-button {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
 }
 
 /* IMPORT BUTTON */
@@ -125,9 +150,9 @@
     vertical-align: middle;
 }
 
-.search-bar {
+.search-bar-render {
     width: 80%;
-    height: 100%;
+    height: fit-content;
     background-color: #DCDCDC;
     margin: 10px;
     text-align: left;
@@ -136,12 +161,22 @@
     border-radius: 20px;
     display: inline-block;
     vertical-align: middle;
+    padding-top: 10px;
 }
 
-/*****************************************************************************/
-.exit-canvas-button {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    padding: 10px;
+.search-bar-text-render{
+    border: none;
+    outline: none;
+    background-color: #DCDCDC;
+    resize: none;
+    height: 20px;
+    line-height: 20px;
+    font-size: 15px;
 }
+
+.search-bar-text-render:active {
+    border: none;
+    outline: none;
+}
+
+/*****************************************************************************

@@ -5,11 +5,14 @@ import { useContext, RefObject, useRef, useEffect, useState } from "react";
 import { editImage, getImageDescription } from "./../GPT.tsx"
 import { ImageContext } from "./../ImageContext"
 
+import up_arrow from '../assets/up_arrow2.svg'
+
+import './GetPromptBtn.css'
 
 interface Props {
-    canvasRef: RefObject<HTMLCanvasElement | null>;
-    //canvasRef: typeof useRef;
+    canvasRef: React.RefObject<HTMLCanvasElement>;
 }
+<<<<<<< HEAD
 export default function GetPromptBtn({ canvasRef }: Props) {
     const [isClicked, setIsClicked] = useState(false);
 
@@ -48,10 +51,30 @@ export default function GetPromptBtn({ canvasRef }: Props) {
             } catch (error) {
                 console.error("editImage Error:", error);
             }
+=======
+
+export default function GetPromptBtn({ canvasRef }: Props) {
+    function handleClick() {
+        const canvas = canvasRef.current;
+        if (!canvas) {
+            console.error("Canvas element is missing");
+            return;
+        }
+        canvas.toBlob((blob) => {
+            if (!blob) {
+                console.error("Failed to convert canvas to Blob");
+                return;
+            }
+            console.log("Sending PNG image to editImage");
+            editImage(blob, "Can you enhance this part please?", true)
+                .then(response => console.log("editImage Response:", response))
+                .catch(error => console.error("editImage Error:", error));
+>>>>>>> origin/popup
         }, "image/png");
     }
 
     return (
+<<<<<<< HEAD
         <button onClick={handleClick} disabled={isClicked}>
             Generate Image
         </button>
@@ -70,4 +93,10 @@ export default function GetPromptBtn({ canvasRef }: Props) {
     //         </div>
     //     )
     // }
+=======
+        <div className='generate-image-button-style' onClick={handleClick}>
+            <img className='generate-image-button' src={up_arrow} />
+        </div>
+    );
+>>>>>>> origin/popup
 }
