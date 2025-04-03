@@ -5,14 +5,9 @@ import './Canvas.css'
 import './RenderCanvas.css'
 
 {/* COMPONENTS */ }
-import OpenCanvasBtn from './OpenCanvasBtn.tsx';
 import Canvas from './Canvas.tsx';
 import ToolBar from './ToolBar.tsx';
-import ExitCanvasBtn from "./ExitCanvasBtn";
-import ToolBtn from './ToolBtn.tsx';
 import GetPromptBtn from './GetPromptBtn.tsx';
-import up_arrow from '../assets/up_arrow2.svg'
-
 
 {/* IMAGES */ }
 import importBtn from "../assets/plus-button.svg";
@@ -23,11 +18,10 @@ import Sidebar from "../Sidebar.tsx";
 
 interface RenderCanvasProps {
     setIsCanvasOpen: (isOpen: boolean) => void;
-    isCanvasOpen: boolean;  // Add this if you need to use the state here
-    
+    isCanvasOpen: boolean;  
 }
 
-export default function RenderCanvas({ setIsCanvasOpen, isCanvasOpen }: RenderCanvasProps) {
+export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
     const [selectedTool, setSelectedTool] = useState("pencil"); // state hook
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
