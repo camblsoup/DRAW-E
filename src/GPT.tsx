@@ -2,7 +2,7 @@ import OpenAI from "openai"
 import {ImageGenerateParams} from "openai/resources/images";
 import $ from "jquery";
 
-const apiUrl = "http://localhost:5000/"
+const apiUrl = "https://drawe-backend.onrender.com/:10000"
 
 const openai = new OpenAI({
     apiKey: import.meta.env.VITE_OPEN_API_KEY,
