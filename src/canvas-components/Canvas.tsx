@@ -2,7 +2,7 @@ import ExitCanvasBtn from "./ExitCanvasBtn";
 import GetPromptBtn from "./GetPromptBtn";
 import "./Canvas.css";
 import { createContext, useEffect, useState } from "react";
-import { useRef } from "react";
+import { useRef, RefObject } from "react";
 // Source: https://www.youtube.com/watch?v=y84tBZo8GFo
 // soruce: https://stackoverflow.com/questions/64625367/is-there-a-way-to-use-canvas-to-draw-something-on-the-click-of-a-button-with-rea
 // Ref Documentation https://react.dev/reference/react/useRef
@@ -10,7 +10,7 @@ import { useRef } from "react";
 interface Props {
     setIsCanvasOpen: (canvasState: Boolean) => Boolean;
     selectedTool: String;
-    canvasRef: typeof useRef;
+    canvasRef: RefObject<HTMLCanvasElement | null>;
 }
 
 export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef }: Props) {

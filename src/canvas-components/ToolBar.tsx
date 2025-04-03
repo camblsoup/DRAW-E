@@ -13,7 +13,6 @@ interface Props {
 export default function ToolBar({ selectedTool, setSelectedTool }: Props) {
 
     const [activeTool, setActiveTool] = useState<string | null>(null);
-
     const [hiddenTools, setHiddenTools] = useState(false);
 
     // [main tool type [tools, in, expanded, menu]] 

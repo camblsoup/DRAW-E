@@ -10,7 +10,9 @@ import Sidebar from './Sidebar.tsx'
 import RenderCanvas from './canvas-components/RenderCanvas.tsx'
 
 createRoot(document.getElementById('root')!).render(
+  <>
   <StrictMode>
     <RenderCanvas/>
   </StrictMode>
+  </>
 )

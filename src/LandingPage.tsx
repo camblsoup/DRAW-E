@@ -12,6 +12,7 @@ import settings_icon from './assets/settings.svg'
 import upgrade_icon from './assets/upgrade.svg'
 import logout_icon from './assets/logout.svg'
 import OpenCanvasBtn from './canvas-components/OpenCanvasBtn'
+import { generateImage } from './GPT'
 
 interface Props {
   setIsCanvasOpen: (tool: String) => String;
@@ -29,6 +30,9 @@ function LandingPage({ setIsCanvasOpen }: Props) {
       return
     }
     console.log('Generating user image....', promptText)
+    //change to false when ready
+    let imageurl = generateImage(promptText, true)
+    console.log(imageurl)
     //Call GPT API HERE
   };
 

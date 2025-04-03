@@ -28,7 +28,7 @@ export default function RenderCanvas() {
         <div>
             {isCanvasOpen ? (
                 <>
-                    <div>
+                    <div className="container">
                         <div className='tool-bar-container'>
                             <div className='tool-bar'>
                                 <ToolBar setSelectedTool={setSelectedTool} />
