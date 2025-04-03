@@ -3,7 +3,6 @@
 
 import { useContext, RefObject, useRef, useEffect, useState } from "react";
 import { editImage, getImageDescription } from "./../GPT.tsx"
-import { editImage, getImageDescription } from "./../GPT.tsx"
 import { ImageContext } from "./../ImageContext"
 
 import up_arrow from '../assets/up_arrow2.svg'
