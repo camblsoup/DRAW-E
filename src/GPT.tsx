@@ -21,7 +21,10 @@ const prompt: ImageGenerateParams = {
 export async function generateImage(prompt: string, testing: boolean) {
     if (testing) {
         console.log("Testing image generation with backend")
-        return {url:"https://upload.wikimedia.org/wikipedia/commons/b/bf/Test_card.png"}
+        var testResponse = JSON.stringify({image: "https://upload.wikimedia.org/wikipedia/commons/b/bf/Test_card.png"})
+        console.log(testResponse)
+        return testResponse
+        //return {url:"https://upload.wikimedia.org/wikipedia/commons/b/bf/Test_card.png"}
     }
     return new Promise((resolve, reject) => {
         $.ajax({

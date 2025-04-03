@@ -33,7 +33,7 @@ export default function GetPromptBtn({ canvasRef }: Props) {
 
             console.log("Sending PNG image to editImage");
             try {
-                const response = await editImage(blob, "Do your best to make this image look like a painting", false);
+                const response = await editImage(blob, "Do your best to make this image look like a painting", true);
                 console.log(response);
                 //prints the image url to the console
                 console.log(response.image)

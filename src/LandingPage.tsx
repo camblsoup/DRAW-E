@@ -30,7 +30,7 @@ function LandingPage() {
     }
     console.log('Generating user image....', promptText)
     //change to false when ready
-    let imageurl = generateImage(promptText, false)
+    let imageurl = generateImage(promptText, true)
     console.log(imageurl)
 
   };
