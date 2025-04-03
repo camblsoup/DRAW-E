@@ -24,11 +24,12 @@ import Sidebar from "../Sidebar.tsx";
 interface RenderCanvasProps {
     setIsCanvasOpen: (isOpen: boolean) => void;
     isCanvasOpen: boolean;  // Add this if you need to use the state here
+    
 }
 
 export default function RenderCanvas({ setIsCanvasOpen, isCanvasOpen }: RenderCanvasProps) {
     const [selectedTool, setSelectedTool] = useState("pencil"); // state hook
-    const canvasRef = useRef(null);
+    const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
     return <>
         <div>
@@ -53,7 +54,7 @@ export default function RenderCanvas({ setIsCanvasOpen, isCanvasOpen }: RenderCa
                                 <div className='prompt-box-container-render'>
                                     <div import-button-container><img className='import-button' src={importBtn} /></div>
                                     <textarea className='prompt-box-text-render' placeholder="Ask anything" />
-                                    <div><GetPromptBtn canvas={canvasRef.current} /></div>
+                                    <div><GetPromptBtn canvasRef={canvasRef} /></div>
                                 </div>
                                 {/* SAVE BUTTON */}
                                 <div className='save-button-container'><img className='save-button' src={downloadBtn} /></div>

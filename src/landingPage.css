@@ -129,6 +129,7 @@ hr {
   resize: none;
   padding: 10px;
   background: none;
+  color: black;
 }
 
 .prompt-box-text:focus {
