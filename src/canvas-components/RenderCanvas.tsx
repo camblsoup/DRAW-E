@@ -22,7 +22,7 @@ import Sidebar from "../Sidebar.tsx";
 export default function RenderCanvas() {
     const [isCanvasOpen, setIsCanvasOpen] = useState(false); // state hook
     const [selectedTool, setSelectedTool] = useState("pencil"); // state hook
-    const canvasRef = useRef(null);
+    const canvasRef = useRef<HTMLCanvasElement| null>(null);
 
     return <>
         <div>
@@ -69,7 +69,7 @@ export default function RenderCanvas() {
                         </div>
                         {/* CLOSE CANVAS BUTTON */}
                         <div className='exit-canvas-button'>
-                            <GetPromptBtn canvas={canvasRef.current} />
+                            <GetPromptBtn canvasRef={canvasRef} />
                             <ExitCanvasBtn setIsCanvasOpen={setIsCanvasOpen} />
                         </div>
                     </div>

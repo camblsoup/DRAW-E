@@ -45,12 +45,37 @@ export async function generateImage(prompt: string, testing: boolean) {
 
 //First input is the image url to be described
 //Second is the testing boolean, True indicates testing
-export async function getImageDescription(imageBlob: string, testing: boolean) {
+export async function getImageDescription(imageBlob: Blob, testing: boolean) {
     // testing mode
     if (testing) {
-        console.log("Testing image description")
-        return "Image desctiption test complete"
+        console.log("Testing image describing with backend");
+        return "describeImage testing complete";
     }
+    console.log("Describing image with backend")
+    const formData = new FormData();
+    formData.append("image", imageBlob, "image.png");
+    console.log(formData)
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: apiUrl + "/describe",
+            type: "POST",
+            data: formData,
+            processData: false, // Important: Prevent jQuery from processing FormData
+            contentType: false, // Important: Let the browser set the content type
+            success: function(response) {
+                console.log("Image described successfully:", response);
+                resolve(response);
+            },
+            error: function(xhr, status, error){
+                console.error("describedImage error:", error);
+                reject(error);
+            }
+        });
+    });
+}
+
+
+/*
     //if no image given
     if (!imageBlob) {
         console.log("No image url provided")
@@ -71,9 +96,10 @@ export async function getImageDescription(imageBlob: string, testing: boolean) {
 
         }],
     });  
-    return response.choices[0].message.content;
+    //return response.choices[0].message.content;
+    return generateImage(response.choice[0].message.content, false)
 }
-
+*/
 
 
 export async function editImage(imageBlob: Blob, prompt: string, testing: boolean) {
@@ -85,7 +111,7 @@ export async function editImage(imageBlob: Blob, prompt: string, testing: boolea
     const formData = new FormData();
     formData.append("image", imageBlob, "image.png");
     formData.append("prompt", prompt);
-
+    console.log(formData)
     return new Promise((resolve, reject) => {
         $.ajax({
             url: apiUrl + "/edit",
