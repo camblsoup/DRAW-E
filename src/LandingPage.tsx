@@ -1,10 +1,10 @@
 {/* LIBRARY */ }
 import { useState } from 'react'
 
-{/* STYLESHEETS*/ }
+{/* STYLESHEETS */ }
 import './LandingPage.css'
 
-{/* IMAGES*/ }
+{/* IMAGES */ }
 import up_arrow from './assets/up_arrow2.svg'
 import logo2 from './assets/logo2.svg'
 import profile_icon from './assets/profile_button.svg'

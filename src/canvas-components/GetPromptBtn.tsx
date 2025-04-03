@@ -3,6 +3,7 @@
 
 import { useContext, RefObject, useRef, useEffect, useState } from "react";
 import { editImage, getImageDescription } from "./../GPT.tsx"
+import TextPromptBox from "./TextPromptBox.tsx";
 import { ImageContext } from "./../ImageContext"
 
 import up_arrow from '../assets/up_arrow2.svg'
@@ -11,20 +12,22 @@ import './GetPromptBtn.css'
 
 interface Props {
     canvasRef: React.RefObject<HTMLCanvasElement>;
+    promptText: string;
 }
-export default function GetPromptBtn({ canvasRef }: Props) {
-    
+export default function GetPromptBtn({ canvasRef, promptText }: Props) {
 
     async function handleClick() {
-        
+        const istesting = false;
+        const promptTextElement = document.querySelector('.prompt-box-text-render') as HTMLTextAreaElement;
+        const prompt = promptTextElement?.value || "Do your best to make this image look like a painting";
         const canvas = canvasRef.current;
-        const ctx = canvas.getContext("2d")
+        const ctx = canvas.getContext("2d");
 
         if (!ctx){
             console.error("Canvas context is missing");
             return;
         }
-
+        console.log("prompt:", prompt);
         canvas.toBlob(async (blob) => {
             if (!blob) {
                 console.error("Failed to convert canvas to 'Blob'");
@@ -33,13 +36,14 @@ export default function GetPromptBtn({ canvasRef }: Props) {
 
             console.log("Sending PNG image to editImage");
             try {
-                const response = await editImage(blob, "Do your best to make this image look like a painting", true);
+                const response = await editImage(blob, prompt, istesting);
                 console.log(response);
                 //prints the image url to the console
-                console.log(response.image)
+                //console.log(response.image)
                 if (response) {
                     const aiImg = document.getElementById("AI-img") as HTMLImageElement;
                     if (aiImg) aiImg.src = response.image;
+                    
                 } else {
                     console.error("No URL received from the server");
                 }
