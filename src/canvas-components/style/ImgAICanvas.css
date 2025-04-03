@@ -1,0 +1,14 @@
+#AI-img{
+    
+}
+.AI-component{
+    position:absolute; top:0; left:0;
+}
+
+.AI-img-wrapper{
+    padding-top: 10px;
+    height: 63vh;
+    width: 80%;
+    min-height: 675px;
+
+}
