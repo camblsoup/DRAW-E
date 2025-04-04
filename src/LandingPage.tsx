@@ -20,6 +20,8 @@ import RenderCanvas from './canvas-components/RenderCanvas.tsx';
 function LandingPage() {
   const [isCanvasOpen, setIsCanvasOpen] = useState(false);
   const [promptText, setPromptText] = useState('');
+  //testing boolean, false will request from OpenAI, true will return default image
+  const testing = false;
 
   /////////////////////////////////////////////////////////////////////////////
 
@@ -29,8 +31,7 @@ function LandingPage() {
       return
     }
     console.log('Generating user image....', promptText)
-    //change to false when ready
-    let imageurl = generateImage(promptText, true)
+    let imageurl = generateImage(promptText, testing)
     console.log(imageurl)
 
   };

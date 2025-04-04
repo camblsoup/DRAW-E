@@ -17,7 +17,9 @@ interface Props {
 export default function GetPromptBtn({ canvasRef, promptText }: Props) {
 
     async function handleClick() {
+        //testing boolean, false will request from OpenAI, true will return default image
         const istesting = false;
+        
         const promptTextElement = document.querySelector('.prompt-box-text-render') as HTMLTextAreaElement;
         const prompt = promptTextElement?.value || "Do your best to make this image look like a painting";
         const canvas = canvasRef.current;
