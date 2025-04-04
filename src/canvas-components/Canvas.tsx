@@ -33,6 +33,8 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef,imgCont
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, 1024, 1024);
         ctx.lineWidth = 2;
         ctx.lineCap = "round"; // pen style 
         ctx.strokeStyle = "blue"; // 
