@@ -5,8 +5,8 @@ import up_arrow from './assets/up_arrow2.svg'
 import handlePrompt from '../LandingPage.tsx'
 
 interface Props {
-    setPromptText: (text: String) => String;
-    promptText: String
+    setPromptText: (text: string) => string;
+    promptText: string
 }
 export default function TextPromptBox({setPromptText, promptText}: Props){
 
