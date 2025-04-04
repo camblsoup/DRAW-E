@@ -28,13 +28,14 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef,imgCont
         const imgCanvas = canvasRef.current;
         if (!canvas) return;
         //CanvasRenderingContext2D Documentation: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
-        canvas.width = window.innerWidth * 0.7; // 70% of the screen width
-        canvas.height = window.innerHeight * 0.7; // 70% f the screen height 
+        var canvas_container = document.getElementById("canvas-wrapper") as HTMLDivElement;
+        canvas.width = canvas_container.offsetWidth; // 70% of the screen width
+        canvas.height = canvas_container.offsetHeight; // 70% f the screen height 
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
         //an attempt to force the canvas to 1024x1024, might not be needed - Eli
-        ctx.fillStyle = "white";
-        ctx.fillRect(0, 0, 1024, 1024);
+        //ctx.fillStyle = "white";
+        //ctx.fillRect(0, 0, 1024, 1024);
         ctx.lineWidth = 2;
         ctx.lineCap = "round"; // pen style 
         ctx.strokeStyle = "blue"; // 
