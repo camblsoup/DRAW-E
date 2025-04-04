@@ -45,7 +45,7 @@ body {
     display: flex;
     flex-direction: row;
     padding: 0px 10px;
-    height: 78.5vh;
+    height: 80vh;
 }
 
 .tool-bar {
@@ -160,7 +160,7 @@ body {
 /* SECTION 3: RIGHT SIDE */
 .assets-tab {
     width: 20vw;
-    height: 78.5vh;
+    height: 80vh;
     background-color: white;
     display: flex;
     flex-direction: column;
