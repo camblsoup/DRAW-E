@@ -136,7 +136,7 @@ export async function editImage(imageBlob: Blob, prompt: string, isTesting: bool
 
 //sends an image to be converted to speech, will return an audio file (.mp3)
 //accepts an imageBlob and a isTesting boolean
-export async function textToSpeech(imageBlob: Blob, isTesting: boolean) {
+export async function textToSpeech(text: string, isTesting: boolean) {
     if (isTesting) {
         console.log("Testing image editing with backend");
         return "editImage testing complete";
@@ -144,12 +144,12 @@ export async function textToSpeech(imageBlob: Blob, isTesting: boolean) {
 
     //build the request form    
     const formData = new FormData();
-    formData.append("image", imageBlob, "image.png");
+    formData.append("text", text);
 
     //send request to backend that will make the request to OpenAi API    
     try {
         const response = await fetch(`${apiUrl}/edit`, {
-            method: "POST",
+            method: "GET",
             body: formData,
         });
 
@@ -167,5 +167,17 @@ export async function textToSpeech(imageBlob: Blob, isTesting: boolean) {
         console.error("editImage fetch error:", error);
         throw error;
     }
+}
+
+//experimental function, probably won't work right away
+export async function imageToSpeech(imageBlob: Blob, isTesting: boolean) {
+    if (isTesting) {
+        console.log("Testing imageToSpeech");
+        return "imageToSpeech testing complete";
+    }
+    //returns a text description of the image
+    const text = await getImageDescription(imageBlob, isTesting);
+    //converts the text description to speech and returns the mp3, hopefully?
+    return await textToSpeech(text, isTesting);
 }
 
