@@ -32,7 +32,7 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef,imgCont
         canvas.height = window.innerHeight * 0.7; // 70% f the screen height 
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
-
+        //an attempt to force the canvas to 1024x1024, might not be needed - Eli
         ctx.fillStyle = "white";
         ctx.fillRect(0, 0, 1024, 1024);
         ctx.lineWidth = 2;

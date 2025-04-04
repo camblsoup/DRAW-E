@@ -31,6 +31,7 @@ export async function generateImage(prompt: string, isTesting: boolean) {
 
     //send request to backend that will make the request to OpenAi API
     try {
+        //`${var}some text is like old school concat var + sometext
         const response = await fetch(`${apiUrl}/generate?prompt=${encodeURIComponent(prompt)}`, {
             method: "GET",
             headers: {

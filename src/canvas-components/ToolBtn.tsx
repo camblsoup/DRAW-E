@@ -17,6 +17,9 @@ export default function ToolBtn({isExpandable ,toolName, setSelectedTool }: Prop
     let btnRef = useRef<HTMLButtonElement | null>(null);
     //button.hidePopover(); //helpppp
     //button?.classList.toggle(`popover-${toolName}`); //helpppp
+    //instead of popover, maybe make a subtool list? subtool:string[] in props?
+    //use click to select the tool and hover(with a small delay) to expand?
+    //Let me know what you think Miro. - Eli
 
     console.log(toolName)
     useEffect(() => {
