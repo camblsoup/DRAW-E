@@ -1,6 +1,5 @@
 import OpenAI from "openai"
 import {ImageGenerateParams} from "openai/resources/images";
-import $ from "jquery";
 
 const apiUrl = "https://drawe-backend.onrender.com"
 
@@ -20,35 +19,40 @@ const prompt: ImageGenerateParams = {
 
 export async function generateImage(prompt: string, testing: boolean) {
     if (testing) {
-        console.log("Testing image generation with backend")
-        var testResponse = JSON.stringify({image: "https://upload.wikimedia.org/wikipedia/commons/b/bf/Test_card.png"})
-        console.log(testResponse)
-        return testResponse
-        //return {url:"https://upload.wikimedia.org/wikipedia/commons/b/bf/Test_card.png"}
+        console.log("Testing image generation with backend");
+        const testResponse = { image: "https://upload.wikimedia.org/wikipedia/commons/b/bf/Test_card.png" };
+        console.log(testResponse);
+        return testResponse;
     }
-    return new Promise((resolve, reject) => {
-        $.ajax({
-            url: apiUrl + "/generate",
-            type: "GET",
-            data: {"prompt":prompt},
-            dataType: "json",
-            success: function(response) {
-                console.log("success", response);
-                resolve(response);
+
+    try {
+        const response = await fetch(`${apiUrl}/generate?prompt=${encodeURIComponent(prompt)}`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
             },
-            error: function(xhr, status, error){
-                console.error("error", error);
-                reject(error);
-            }
-        })
-    })
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error("generateImage error:", errorText);
+            throw new Error(`Failed to generate image: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        console.log("Image generated successfully:", data);
+        return data;
+    } catch (error) {
+        console.error("generateImage fetch error:", error);
+        throw error;
+    }
 }
 
 
 
 //First input is the image url to be described
 //Second is the testing boolean, True indicates testing
-export async function getImageDescription(imageBlob: Blob, testing: boolean) {
+/*export async function getImageDescription(imageBlob: Blob, testing: boolean) {
     // testing mode
     if (testing) {
         console.log("Testing image describing with backend");
@@ -75,34 +79,39 @@ export async function getImageDescription(imageBlob: Blob, testing: boolean) {
             }
         });
     });
-}
+}*/
 
-
-/*
-    //if no image given
-    if (!imageBlob) {
-        console.log("No image url provided")
-        return "No image url provided"
+export async function getImageDescription(imageBlob: Blob, testing: boolean) {
+    if (testing) {
+        console.log("Testing image describing with backend");
+        return "describeImage testing complete";
     }
-    //build the response
-    const response = await openai.chat.completions.create({
-        model: "gpt-40-mini",
-        messages: [{
-            role: "user",
-            content: [
-                { type: "text", text: "Can you describe this image in detail?"},
-                {
-                    type: "image_url",
-                    image_url: {url: imageBlob,}
-                },
-            ],
 
-        }],
-    });  
-    //return response.choices[0].message.content;
-    return generateImage(response.choice[0].message.content, false)
+    console.log("Describing image with backend");
+
+    const formData = new FormData();
+    formData.append("image", imageBlob, "image.png");
+
+    try {
+        const response = await fetch(`${apiUrl}/describe`, {
+            method: "POST",
+            body: formData,
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error("describeImage error:", errorText);
+            throw new Error(`Failed to describe image: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        console.log("Image described successfully:", data);
+        return data;
+    } catch (error) {
+        console.error("describeImage fetch error:", error);
+        throw error;
+    }
 }
-*/
 
 
 export async function editImage(imageBlob: Blob, prompt: string, testing: boolean) {
@@ -114,23 +123,25 @@ export async function editImage(imageBlob: Blob, prompt: string, testing: boolea
     const formData = new FormData();
     formData.append("image", imageBlob, "image.png");
     formData.append("prompt", prompt);
-    console.log(formData)
-    return new Promise((resolve, reject) => {
-        $.ajax({
-            url: apiUrl + "/edit",
-            type: "POST",
-            data: formData,
-            processData: false, // Important: Prevent jQuery from processing FormData
-            contentType: false, // Important: Let the browser set the content type
-            success: function(response) {
-                console.log("Image edited successfully:", response);
-                resolve(response);
-            },
-            error: function(xhr, status, error){
-                console.error("editImage error:", error);
-                reject(error);
-            }
+
+    try {
+        const response = await fetch(`${apiUrl}/edit`, {
+            method: "POST",
+            body: formData,
         });
-    });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error("editImage error:", errorText);
+            throw new Error(`Failed to edit image: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        console.log("Image edited successfully:", data);
+        return data;
+    } catch (error) {
+        console.error("editImage fetch error:", error);
+        throw error;
+    }
 }
 
