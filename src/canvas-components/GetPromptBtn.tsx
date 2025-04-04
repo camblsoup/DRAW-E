@@ -4,11 +4,13 @@
 import { useContext, RefObject, useRef, useEffect, useState } from "react";
 import { editImage, getImageDescription } from "./../GPT.tsx"
 import TextPromptBox from "./TextPromptBox.tsx";
-import { ImageContext } from "./../ImageContext"
 
 import up_arrow from '../assets/up_arrow2.svg'
 
 import './GetPromptBtn.css'
+
+//TODO
+//Get prompt text from user and add it to the imageblob
 
 interface Props {
     canvasRef: React.RefObject<HTMLCanvasElement>;
@@ -19,7 +21,7 @@ export default function GetPromptBtn({ canvasRef, promptText }: Props) {
     async function handleClick() {
         //testing boolean, false will request from OpenAI, true will return default image
         const istesting = false;
-        
+
         const promptTextElement = document.querySelector('.prompt-box-text-render') as HTMLTextAreaElement;
         const prompt = promptTextElement?.value || "Do your best to make this image look like a painting";
         const canvas = canvasRef.current;
@@ -60,65 +62,4 @@ export default function GetPromptBtn({ canvasRef, promptText }: Props) {
             <img className='generate-image-button' src={up_arrow} />
         </div>
     );
-
-
-    // {isClicked?(
-    //     <div>
-    //         <img src = {canvas.toDataURL('image/png')}> </img>
-    //     </div>
-    //     ):(
-    //         <div>
-    //             <button onClick={handleClick}>
-    //                 generate image
-    //             </button>
-    //         </div>
-    //     )
-    // }
 }
-/*
-export default function GetPromptBtn({ canvasRef }: Props) {
-    function handleClick() {
-        const canvas = canvasRef.current;
-        if (!canvas) {
-            console.error("Canvas element is missing");
-            return;
-        }
-        canvas.toBlob((blob) => {
-            if (!blob) {
-                console.error("Failed to convert canvas to Blob");
-                return;
-            }
-            console.log("Sending PNG image to editImage");
-            editImage(blob, "Can you enhance this part please?", true)
-                .then(response => console.log("editImage Response:", response))
-                .catch(error => console.error("editImage Error:", error));
->>>>>>> origin/popup
-        }, "image/png");
-    }
-
-    return (
-<<<<<<< HEAD
-        <button onClick={handleClick} disabled={isClicked}>
-            Generate Image
-        </button>
-    );
-
-
-    // {isClicked?(
-    //     <div>
-    //         <img src = {canvas.toDataURL('image/png')}> </img>
-    //     </div>
-    //     ):(
-    //         <div>
-    //             <button onClick={handleClick}>
-    //                 generate image
-    //             </button>
-    //         </div>
-    //     )
-    // }
-=======
-        <div className='generate-image-button-style' onClick={handleClick}>
-            <img className='generate-image-button' src={up_arrow} />
-        </div>
-    );
-}*/
