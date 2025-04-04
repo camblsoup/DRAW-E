@@ -7,10 +7,8 @@
 }
 
 .drawing-canvas{
-    padding-top: 10px;
-    height: 63vh;
+    height: 71vh;
     width: 100%;
-    min-height: 675px;
 }
 
 .canvas-buttons button {
