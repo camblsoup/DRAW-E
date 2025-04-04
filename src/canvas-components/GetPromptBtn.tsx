@@ -20,7 +20,7 @@ export default function GetPromptBtn({ canvasRef, promptText }: Props) {
 
     async function handleClick() {
         //testing boolean, false will request from OpenAI, true will return default image
-        const istesting = true;
+        const isTesting = false;
 
         const promptTextElement = document.querySelector('.prompt-box-text-render') as HTMLTextAreaElement;
         const prompt = promptTextElement?.value || "Do your best to make this image look like a painting";
@@ -40,7 +40,7 @@ export default function GetPromptBtn({ canvasRef, promptText }: Props) {
 
             console.log("Sending PNG image to editImage");
             try {
-                const response = await editImage(blob, prompt, istesting);
+                const response = await editImage(blob, prompt, isTesting);
                 console.log(response);
                 //prints the image url to the console
                 //console.log(response.image)
