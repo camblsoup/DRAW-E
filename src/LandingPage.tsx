@@ -21,7 +21,7 @@ function LandingPage() {
   const [isCanvasOpen, setIsCanvasOpen] = useState(false);
   const [promptText, setPromptText] = useState('');
   //testing boolean, false will request from OpenAI, true will return default image
-  const testing = false;
+  const isTesting = false;
 
   /////////////////////////////////////////////////////////////////////////////
 
@@ -31,7 +31,7 @@ function LandingPage() {
       return
     }
     console.log('Generating user image....', promptText)
-    let imageurl = generateImage(promptText, testing)
+    let imageurl = generateImage(promptText, isTesting)
     console.log(imageurl)
 
   };
