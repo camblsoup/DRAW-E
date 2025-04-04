@@ -103,8 +103,7 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef,imgCont
 
     return <>
         <div id = "canvas-wrapper">
-            <canvas ref={canvasRef} className="drawing-canvas" id="drawContainer" />
-            
+            <canvas ref={canvasRef} className="drawing-canvas" id="drawContainer" /> 
         </div>
     </>
 }

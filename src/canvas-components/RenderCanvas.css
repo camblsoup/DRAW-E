@@ -40,13 +40,12 @@ body {
 /* SECTION 1: TOOLBAR SECTION*/
 .tool-bar-container {
     width: fit-content;
-    min-height: 750px;
     background-color: white;
     border-radius: 20px;
     display: flex;
     flex-direction: row;
     padding: 0px 10px;
-    height: 78vh;
+    height: 78.5vh;
 }
 
 .tool-bar {
@@ -58,19 +57,16 @@ body {
 
 .middle-section-container {
     background-color: white;
-    height: 76vh;
     border-radius: 20px;
     padding: 10px;
     width: 60vw;
 
 }
 
-.middle-section-container #canvas-wrapper{
+#canvas-wrapper{
     display: flex;
     flex-direction: column;
     background-color: white;
-    height: 95%;
-    min-height: 750px;
     border-radius: 20px;
 }
 
@@ -80,9 +76,7 @@ body {
     gap: 10px;
     color: black;
     justify-content: space-between;   
-    
-    position: relative;
-    bottom: 0;
+
 }
 
 .prompt-box-container-render {
@@ -166,12 +160,11 @@ body {
 /* SECTION 3: RIGHT SIDE */
 .assets-tab {
     width: 20vw;
-    height: 78vh;
+    height: 78.5vh;
     background-color: white;
     display: flex;
     flex-direction: column;
     border-radius: 20px;
-    min-height: 750px;
 }
 
 .search-bar-container {
