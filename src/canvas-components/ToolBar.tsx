@@ -1,6 +1,8 @@
 
 import ToolBtn from "./ToolBtn";
 import "./Tools.css";
+import "./style/hiddenTools.css";
+
 import ExpandedTool from "./ExpandedTool";
 import { useState } from "react";
 
@@ -30,28 +32,41 @@ export default function ToolBar({ selectedTool, setSelectedTool }: Props) {
 
 
     console.log(toolTypes);
-    return (
-        <div className="tools-bar">
-            {/* TOOL ON THE TOOL BAR */}
-            {toolTypes.map((theTool) => (
-                <div key={theTool[0]} className="joe">
-                    {/* TOOL ON THE TOOL BAR */}
-                    <ToolBtn
-                        isExpandable={true}
-                        toolName={theTool[0]}
-                        className="selected-tool"
-                        setSelectedTool={setSelectedTool}
-                    />
+    return( <>
+        {/* TOOL ON THE TOOL BAR */}
+        <div className='tool-bar'>
+            <div className="tools-bar">
+                {toolTypes.map((theTool) => (
+                    <div className="tools-bar">
+                        <div key={theTool[0]} className="joe">
+                            {/* TOOL ON THE TOOL BAR */}
+                            <ToolBtn
+                                isExpandable={true}
+                                toolName={theTool[0]}
+                                className="selected-tool"
+                                setSelectedTool={setSelectedTool}
+                                />
+                        </div>
+                    </div>
+                    ))}
+                <div>
+            </div>
 
+            {toolTypes.map((theTool) => (
+                
+                <div className="hidden-tools-container">
                     {/* HIDDEN PORTION */}
-                    {theTool[1] ? (<div className="selected-tool" id={`popover-${theTool[0]}`} popover="auto">
-                        < ExpandedTool  className = "hidden-tools" setSelectedTool={setSelectedTool} subTypes={theTool[1]} />
-                    </div>) :
-                        null
-                    }
+                    {theTool[1] ? (
+                        <div className="tools-expand" id={`popover-${theTool[0]}`} popover="auto">
+                            < ExpandedTool  className = "tools-expand" setSelectedTool={setSelectedTool} subTypes={theTool[1]} />
+                        </div>
+                    ) :
+                    null
+                }
                 </div>
             ))}
-
+            </div>
         </div>
+    </>
     );
 }

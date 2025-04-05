@@ -23,19 +23,14 @@
 }
 
 
-.tool-expand:active {
-    width: flex;
-    flex-direction: row;
-    display: flex;
-    overflow: visible;
-}
 
 .tool-expand {
     z-index: 1;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     max-height: 70px;
     overflow: hidden;
+    background-color: #cacaca;
 }
 
 /***************************************/

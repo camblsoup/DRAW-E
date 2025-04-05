@@ -1,0 +1,13 @@
+#popover-pencil{
+    background-color: transparent;
+    flex-direction: column;
+    justify-content: left;
+}
+#popover-laso{
+    background-color: transparent;
+    flex-direction: row;
+}
+#popover-square{
+    background-color: transparent;
+    flex-direction: column;
+}
