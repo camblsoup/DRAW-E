@@ -28,13 +28,6 @@ export default function ToolBar({ selectedTool, setSelectedTool }: Props) {
         ['redo']
     ];
 
-    function expandTools(event) {
-        const expansion = document.getElementById(`popover-${theTool[0]}`);
-
-        expansion.style.display = "block";
-        event.stopPropagation();
-
-    }
 
     console.log(toolTypes);
     return (
@@ -51,8 +44,8 @@ export default function ToolBar({ selectedTool, setSelectedTool }: Props) {
                     />
 
                     {/* HIDDEN PORTION */}
-                    {theTool[1] ? (<div className="hidden-tools" id={`popover-${theTool[0]}`} >
-                        < ExpandedTool popover="auto" setSelectedTool={setSelectedTool} subTypes={theTool[1]} />
+                    {theTool[1] ? (<div className="selected-tool" id={`popover-${theTool[0]}`} popover="auto">
+                        < ExpandedTool  className = "hidden-tools" setSelectedTool={setSelectedTool} subTypes={theTool[1]} />
                     </div>) :
                         null
                     }

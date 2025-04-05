@@ -24,14 +24,13 @@ export default function ToolBtn({isExpandable ,toolName, setSelectedTool }: Prop
     console.log(toolName)
     useEffect(() => {
         
-            const button = btnRef.current;
-            console.log("current Ref:" + button);
-            if(isClicked){
-            button?.classList.toggle(`popover-${toolName}`); //helpppp
+        if(isClicked){
         }
     }, [isClicked]);
     
     function handleClick(e: MouseEvent | HTMLButtonElement) {
+        const button = btnRef.current;
+        button?.classList.toggle(`popover-${toolName}`); //helpppp
         setIsClicked(true);
         setSelectedTool(toolName);
         console.log(toolName + " SET! ");
