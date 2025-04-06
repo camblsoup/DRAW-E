@@ -1,15 +1,17 @@
 #AI-img{
     max-width: fit-content;
     padding-bottom: 25px;
-    width: 80%;
+    width: 100%;
     height: 100%;    
 }
 
-.AI-img-wrapper{
-    position:absolute; top: 0; left:15%;
+#AI-img-wrapper{
+    background-color: white;
+    position:absolute; top: 2%; left:15%;
     height: 63vh;
     max-height: 100%;
     max-width: 100%;
     margin: 5%;
     border-width: 20px;
+    overflow: hidden;
 }

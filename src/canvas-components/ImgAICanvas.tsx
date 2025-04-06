@@ -34,7 +34,7 @@ export default function ImgAICanvas({setIsImgGenerated, isImgGenerated, aiImgRef
     }, [isImgGenerated]);
 
     return <>
-        <div className= "AI-img-wrapper">
+        <div id= "AI-img-wrapper" popover="auto">
             <img src={searchIcon} ref={aiImgRef}  id="AI-img" />
         </div>
     </>

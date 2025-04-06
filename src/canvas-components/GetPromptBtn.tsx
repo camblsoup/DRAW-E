@@ -15,8 +15,9 @@ import './GetPromptBtn.css'
 interface Props {
     canvasRef: React.RefObject<HTMLCanvasElement>;
     promptText: string;
+    setIsImgGenerated: (imgState : Boolean) =>Boolean; 
 }
-export default function GetPromptBtn({ canvasRef, promptText }: Props) {
+export default function GetPromptBtn({ canvasRef, promptText, setIsImgGenerated }: Props) {
 
     async function handleClick() {
         //testing boolean, false will request from OpenAI, true will return default image
@@ -46,8 +47,11 @@ export default function GetPromptBtn({ canvasRef, promptText }: Props) {
                 //console.log(response.image)
                 if (response) {
                     const aiImg = document.getElementById("AI-img") as HTMLImageElement;
+                    const aiImgPopover = document.getElementById("AI-img-wrapper") as HTMLDivElement;
                     if (aiImg) {
                         aiImg.src = response.image;
+                        aiImgPopover.togglePopover();
+                        setIsImgGenerated(true);
                         
                     }
                     

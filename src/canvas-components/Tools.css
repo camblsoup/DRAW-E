@@ -41,7 +41,7 @@
 }
 
 .hidden-tools {
-    position: absolute; top 0; left: 0;
+    position: absolute; top: 0; left: 0;
     background-color: white;
     max-height: 70px;
     flex-direction: row;

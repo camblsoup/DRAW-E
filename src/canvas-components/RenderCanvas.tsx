@@ -56,7 +56,7 @@ export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
                                 <div className='prompt-box-container-render'>
                                     <div import-button-container><img className='import-button' src={importBtn} /></div>
                                     <textarea className='prompt-box-text-render' placeholder="Ask anything" />
-                                    <div><GetPromptBtn canvasRef={canvasRef} /></div>
+                                    <div><GetPromptBtn canvasRef={canvasRef} setIsImgGenerated={setIsImgGenerated} /></div>
                                 </div>
                                 {/* SAVE BUTTON */}
                                 <div className='save-button-container'><img className='save-button' src={downloadBtn} /></div>
