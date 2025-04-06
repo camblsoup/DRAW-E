@@ -41,6 +41,7 @@
 }
 
 .hidden-tools {
+    position: absolute; top 0; left: 0;
     background-color: white;
     max-height: 70px;
     flex-direction: row;
@@ -48,5 +49,5 @@
     z-index: 1;
     display: flex;
     overflow: hidden;
-    margin: 0px;
+    margin: 0%;
 }

@@ -48,9 +48,9 @@ export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
                             <div className='canvas-container'>
                                 <Canvas setIsCanvasOpen={setIsCanvasOpen} canvasRef={canvasRef} selectedTool={selectedTool} />
                             </div>
-                            <div className="AI-component">
-                                <ImgAICanvas setIsImgGenerated={setIsImgGenerated} canvasRef={imgContainerRef} isImgGenerated={isImgGenerated} className="AI-img-wrapper"/>
-                            </div>
+                            
+                            <ImgAICanvas setIsImgGenerated={setIsImgGenerated} canvasRef={imgContainerRef} isImgGenerated={isImgGenerated} className="AI-img-wrapper"/>
+                            
                             {/* PROMPT BOX SECTION */}
                             <div className='bottom-section-container'>
                                 <div className='prompt-box-container-render'>

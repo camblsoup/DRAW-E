@@ -54,7 +54,7 @@ export default function ToolBar({ selectedTool, setSelectedTool }: Props) {
 
             {toolTypes.map((theTool) => (
                 
-                <div className="hidden-tools-container">
+                <>
                     {/* HIDDEN PORTION */}
                     {theTool[1] ? (
                         <div className="tools-expand" id={`popover-${theTool[0]}`} popover="auto">
@@ -63,7 +63,7 @@ export default function ToolBar({ selectedTool, setSelectedTool }: Props) {
                     ) :
                     null
                 }
-                </div>
+                </>
             ))}
             </div>
         </div>

@@ -46,7 +46,10 @@ export default function GetPromptBtn({ canvasRef, promptText }: Props) {
                 //console.log(response.image)
                 if (response) {
                     const aiImg = document.getElementById("AI-img") as HTMLImageElement;
-                    if (aiImg) aiImg.src = response.image;
+                    if (aiImg) {
+                        aiImg.src = response.image;
+                        
+                    }
                     
                 } else {
                     console.error("No URL received from the server");

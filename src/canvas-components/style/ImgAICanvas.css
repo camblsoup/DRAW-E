@@ -1,14 +1,15 @@
 #AI-img{
-    
-}
-.AI-component{
-    position:absolute; top:0; left:0;
+    max-width: fit-content;
+    padding-bottom: 25px;
+    width: 80%;
+    height: 100%;    
 }
 
 .AI-img-wrapper{
-    padding-top: 10px;
+    position:absolute; top: 0; left:15%;
     height: 63vh;
-    width: 80%;
-    min-height: 675px;
-
+    max-height: 100%;
+    max-width: 100%;
+    margin: 5%;
+    border-width: 20px;
 }

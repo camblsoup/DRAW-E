@@ -1,13 +1,43 @@
 #popover-pencil{
-    background-color: transparent;
+    position: absolute; top: 11.2%; left: 11%;
+    background-color: white;
+    border-color: #DCDCDC;
+    border-left-color: transparent;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
     flex-direction: column;
-    justify-content: left;
+    margin: 0%;
+
 }
 #popover-laso{
+    position: absolute; top: 30.5%; left: 11%;
     background-color: transparent;
     flex-direction: row;
+    background-color: white;
+    margin: 0%;
+    border-color: #DCDCDC;
+    border-left-color: transparent;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+
 }
 #popover-square{
-    background-color: transparent;
-    flex-direction: column;
+    position: absolute; top: 37%; left: 11%;
+    background-color: white;
+    flex-direction: row;
+    margin: 0%;
+    border-color: #DCDCDC;
+    border-left-color: transparent;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+#colour-select{
+    position: absolute; top: 40%; left: 11%;
+    background-color: white;
+    flex-direction: row;
+    margin: 0%;
+    border-color: #DCDCDC;
+    border-left-color: transparent;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
