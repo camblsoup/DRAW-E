@@ -63,7 +63,7 @@ body {
 
 }
 
-#canvas-wrapper{
+#canvas-wrapper {
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -75,7 +75,7 @@ body {
     flex-direction: row;
     gap: 10px;
     color: black;
-    justify-content: space-between;   
+    justify-content: space-between;
 
 }
 
@@ -148,7 +148,7 @@ body {
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: background-color 0.2s ease;
 }
 
@@ -187,7 +187,7 @@ body {
     padding-top: 10px;
 }
 
-.search-bar-text-render{
+.search-bar-text-render {
     border: none;
     outline: none;
     background-color: #DCDCDC;
@@ -202,7 +202,23 @@ body {
     outline: none;
 }
 
+.import-asset-button-container {
+    justify-items: center;
+    padding-bottom: 20px;
+}
+
+.import-asset-button {
+    border: 1px solid #E5E5E5;
+    border-radius: 20px;
+    box-shadow: 1px 3px #E5E5E5;
+    cursor: pointer;
+    user-select: none;
+    padding: 5px 20px;
+}
+
+.fire-nation-input-button {
+    display: none
+}
 
 
 /*****************************************************************************
-

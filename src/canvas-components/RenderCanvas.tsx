@@ -48,9 +48,9 @@ export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
                             <div className='canvas-container'>
                                 <Canvas setIsCanvasOpen={setIsCanvasOpen} canvasRef={canvasRef} selectedTool={selectedTool} />
                             </div>
-                            
-                            <ImgAICanvas setIsImgGenerated={setIsImgGenerated} canvasRef={imgContainerRef} isImgGenerated={isImgGenerated} className="AI-img-wrapper"/>
-                            
+
+                            <ImgAICanvas setIsImgGenerated={setIsImgGenerated} canvasRef={imgContainerRef} isImgGenerated={isImgGenerated} className="AI-img-wrapper" />
+
                             {/* PROMPT BOX SECTION */}
                             <div className='bottom-section-container'>
                                 <div className='prompt-box-container-render'>
@@ -63,15 +63,23 @@ export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
                             </div>
                         </div>
                         {/* SECTION 3: THE RIGHT SIDE STUFF */}
-                        <div className="assets-tab"><div className='search-bar-container'>
-                            <div className='search-bar-render'>
-                                <img style={{ height: '20px', width: '20px', paddingRight: '10px' }} src={searchIcon} />
-                                <textarea className='search-bar-text-render' placeholder="Search Categories"></textarea>
+                        <div className="assets-tab">
+                            <div className='search-bar-container'>
+                                <div className='search-bar-render'>
+                                    <img style={{ height: '20px', width: '20px', paddingRight: '10px' }} src={searchIcon} />
+                                    <textarea className='search-bar-text-render' placeholder="Search Categories"></textarea>
+                                </div>
+                                <div>
+                                    <Categories></Categories>
+                                </div>
                             </div>
-                            <div>
-                                <Categories></Categories>
+                            <div className='import-asset-button-container'>
+                                <label className='import-asset-button'>
+                                    Import Assets
+                                    <input className='fire-nation-input-button' type='file' />
+                                </label>
                             </div>
-                        </div></div>
+                        </div>
                     </div>
                 </>)
                 : (
