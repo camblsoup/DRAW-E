@@ -8,7 +8,6 @@ interface Props{
 
 export default function ExpandedTool({setSelectedTool, subTypes}: Props){
     
-    console.log("subtypes== " + subTypes)
     if(subTypes){
         return<>
                 {subTypes.map((subTool)=> (<ToolBtn isExpandable={true} toolName={subTool} setSelectedTool={setSelectedTool} key={subTool} /> ))}

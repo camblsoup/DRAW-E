@@ -29,6 +29,7 @@ export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
     const [isImgGenerated, setIsImgGenerated] = useState(false); // state hook
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const imgContainerRef = useRef<HTMLImageElement | null>(null);
+    const  [canvasContent, setCanvasContent] =useState<ImageData | null>(null);
 
     return <>
         <div>
@@ -46,7 +47,7 @@ export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
                         <div className='middle-section-container'>
                             {/* THE CANVAS */}
                             <div className='canvas-container'>
-                                <Canvas setIsCanvasOpen={setIsCanvasOpen} canvasRef={canvasRef} selectedTool={selectedTool} />
+                                <Canvas setIsCanvasOpen={setIsCanvasOpen} canvasRef={canvasRef} selectedTool={selectedTool} canvasContent={canvasContent} setCanvasContent={setCanvasContent} />
                             </div>
 
                             <ImgAICanvas setIsImgGenerated={setIsImgGenerated} canvasRef={imgContainerRef} isImgGenerated={isImgGenerated} className="AI-img-wrapper" />

@@ -24,6 +24,7 @@ export default function ToolBar({ selectedTool, setSelectedTool }: Props) {
         ['eraser'],
         ['laso', ['circle-laso']],
         ['square', ['circle', 'triangle']],
+        ["fill"],
         ['dropper'],
         ['colour-select'],
         ['undo'],

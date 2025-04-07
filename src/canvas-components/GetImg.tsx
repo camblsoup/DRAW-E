@@ -13,6 +13,7 @@ import undo from "../assets/redo.svg";
 import triangle from "../assets/triangle.svg";
 import circle from "../assets/circle.svg";
 import download from "../assets/download.svg";
+import fill from "../assets/fill.svg";
 import imgNotFound from "../assets/imgNotFound.svg";
 
 interface Props{ 
@@ -64,6 +65,9 @@ export default function GetImg({altText}: Props){
         case "circle":
                 img = circle;
                 break;
+        case "fill":
+            img = fill;
+            break;
         case "download":
             img = download;
             break;

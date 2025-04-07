@@ -21,7 +21,6 @@ export default function ToolBtn({isExpandable ,toolName, setSelectedTool }: Prop
     //use click to select the tool and hover(with a small delay) to expand?
     //Let me know what you think Miro. - Eli
 
-    console.log(toolName)
     useEffect(() => {
         
         if(isClicked){
