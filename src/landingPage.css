@@ -94,6 +94,53 @@ hr {
   transform: translateY(1.5px);
 }
 
+.chat-view {
+  display: flex;
+  flex-direction: column;
+  align-items: top;
+  justify-content: top;
+  overflow-y: auto;
+  height: 70vh;
+  max-width: 70vw;
+  margin: 0 auto 0;
+}
+
+.back-button {
+  margin-bottom: 8px;
+  cursor: pointer;
+  background: #ddd;
+  border: none;
+  border-radius: 8px;
+}
+
+.chat-bubble {
+  align-items: center;
+  margin-bottom: 4px;
+  padding: 8px;
+  border-radius: 12px;
+  max-width: 70vw;
+}
+
+.chat-bubble.user {
+  align-items: right;
+  background-color: #9eb6f9;
+  align-self: flex-end;
+}
+
+.chat-bubble.gpt {
+  align-items: left;
+  background-color: #dcf991;
+}
+
+.generated-image {
+  align-items: center;
+  max-width: 100%;
+  height: 50vh;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  object-fit: contain;
+}
+
 /** 3 **/
 .three-container {
   width: 100vw;
