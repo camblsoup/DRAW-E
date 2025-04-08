@@ -50,6 +50,8 @@ export default function GetPromptBtn({ canvasRef, promptText, setIsImgGenerated 
                     const aiImg = document.getElementById("AI-img") as HTMLImageElement;
                     const aiImgPopover = document.getElementById("AI-img-wrapper") as HTMLDivElement;
                     if (aiImg) {
+                         // must be set before .src
+                        aiImg.src = response.image;
                         aiImg.src = response.image;
                         aiImg.onload = () => {
                             ctx.drawImage(aiImg, 0, 0, canvasRef.current!.width, canvasRef.current!.height);
