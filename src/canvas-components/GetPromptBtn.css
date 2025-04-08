@@ -1,9 +1,16 @@
 .generate-image-button-style {
+    align-items: right;
     background: none;
-    padding: 0px;
     cursor: pointer;
 }
 
 .generate-image-button-style:active {
     filter: sepia(66%) saturate(1647%) hue-rotate(157deg) contrast(98%);
+}
+
+.generate-image-button {
+    align-items: right;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
 }
