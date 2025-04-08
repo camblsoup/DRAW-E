@@ -31,7 +31,7 @@ export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
     const [isImgGenerated, setIsImgGenerated] = useState(false); // state hook
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const imgContainerRef = useRef<HTMLImageElement | null>(null);
-    const  [canvasContent, setCanvasContent] =useState<ImageData | null>(null);
+    const [canvasContent, setCanvasContent] = useState<ImageData | null>(null);
 
     const saveToLocalMachine = () => {
         const canvas = canvasRef.current;
@@ -68,7 +68,7 @@ export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
                             {/* PROMPT BOX SECTION */}
                             <div className='bottom-section-container'>
                                 <div className='prompt-box-container-render'>
-                                <ImportButton canvasRef={canvasRef} tooltipText="Upload an image to draw on!" />
+                                    <ImportButton canvasRef={canvasRef} tooltipText="Upload an image to draw on!" />
                                     <textarea className='prompt-box-text-render' placeholder="Ask anything" />
                                     <div><GetPromptBtn canvasRef={canvasRef} setIsImgGenerated={setIsImgGenerated} /></div>
                                 </div>
@@ -82,12 +82,14 @@ export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
                         <div className="assets-tab">
                             <div className='search-bar-container'>
                                 <div className='search-bar-render'>
-                                    <img style={{ height: '20px', width: '20px', paddingRight: '10px' }} src={searchIcon} />
-                                    <textarea className='search-bar-text-render' placeholder="Search Categories"></textarea>
+                                    <div style={{display: 'flex', alignItems: 'center' }}>
+                                        <img style={{ height: '20px', width: '20px', paddingRight: '10px' }} src={searchIcon} />
+                                        <textarea className='search-bar-text-render' placeholder="Search Categories"></textarea>
+                                    </div>
                                 </div>
-                                <div>
-                                    <Categories></Categories>
-                                </div>
+                            </div>
+                            <div style={{height: '85%'}}>
+                                <Categories></Categories>
                             </div>
                             <div className='import-asset-button-container'>
                                 <label className='import-asset-button'>
@@ -106,6 +108,6 @@ export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
                     </>
                 )}
 
-        </div>
+        </div >
     </>
 }
