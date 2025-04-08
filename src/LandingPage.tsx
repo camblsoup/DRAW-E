@@ -14,25 +14,38 @@ import logout_icon from './assets/logout.svg'
 
 {/* COMPONENTS */ }
 import OpenCanvasBtn from './canvas-components/OpenCanvasBtn'
-import { generateImage } from './GPT'
+import { generateImage,conversation } from './GPT'
 import RenderCanvas from './canvas-components/RenderCanvas.tsx';
 
 function LandingPage() {
   const [isCanvasOpen, setIsCanvasOpen] = useState(false);
   const [promptText, setPromptText] = useState('');
+  const [showChat, setShowChat] = useState(false);
+  const [gptResponse, setGptResponse] = useState('');
+  const [generatedImageUrl, setGeneratedImageUrl] = useState('');
   //testing boolean, false will request from OpenAI, true will return default image
   const isTesting = false;
 
   /////////////////////////////////////////////////////////////////////////////
 
-  const handlePrompt = () => {
+  const handlePrompt = async () => {
     if (!promptText.trim()) {
-      alert('The prompt is empty. Please enter a prompt.')
+      alert('The prompt box is empty. Please enter a prompt.')
       return
     }
-    console.log('Generating user image....', promptText)
-    let imageurl = generateImage(promptText, isTesting)
-    console.log(imageurl)
+    setShowChat(true);
+    const gptResponse = await conversation(promptText);
+    setGptResponse(gptResponse);
+
+  // Get image
+    const imageurl = await generateImage(promptText, isTesting);
+    console.log(imageurl);
+    setGeneratedImageUrl(imageurl.image);
+
+    
+    //console.log('Generating user image....', promptText)
+    //let imageurl = await generateImage(promptText, isTesting)
+    //console.log(imageurl)
 
   };
 
@@ -87,6 +100,8 @@ function LandingPage() {
         </div>
         {/* 2 */}
         <div className="body">
+        {!showChat ? (
+        <>
           <div className="body-column-container">
             <div>
               <img style={{ width: '5vw' }} src={logo2} />
@@ -105,6 +120,17 @@ function LandingPage() {
               </div>
             </div>
           </div>
+          </>
+             ) : (
+            <div className="chat-view">
+              <button className="back-button" onClick={() => setShowChat(false)}>
+                ← Back
+              </button>
+              <div className="chat-bubble user">You: {promptText}</div>
+              <div className="chat-bubble gpt">DRAW-E: {gptResponse}</div>
+              <img className="generated-image" src={generatedImageUrl} alt="Generated art" />
+            </div>
+          )}
         </div>
         {/* 3 */}
         <div className="three-container">

@@ -185,3 +185,29 @@ export async function imageToSpeech(imageBlob: Blob, isTesting: boolean) {
     return await textToSpeech(text['text'], isTesting);
 }
 
+export async function conversation(prompt: string) {
+    const formData = new FormData();
+    formData.append("text", prompt);
+    console.log("Sending text to /conversation: ", prompt);
+    //send request to backend that will make the request to OpenAi API "/conversation"   
+    try {
+        const response = await fetch(`${apiUrl}/conversation`, {
+            method: "POST",
+            body: formData,
+        });
+        console.log("formData:", formData);
+        //if the backend or OpenAi API returns an error, throw an error        
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error("textToSpeech error:", errorText);
+            throw new Error(`Failed to convert t: ${response.statusText}`);
+        }
+        const data = await response.json();
+        console.log(data.text);
+        return data.text;
+    } catch (error) {
+        console.error("Conversation fetch error:", error);
+        throw error;
+    }
+    
+}

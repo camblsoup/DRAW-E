@@ -16,14 +16,14 @@ interface Props {
     setCanvasContent: (canvasContent: ImageData | null) => void;
 }
 
-export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef,imgContainerRef, canvasContent,setCanvasContent }: Props) {
+export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef, canvasContent,setCanvasContent }: Props) {
     console.log("calling Canvas");
     //let isDrawing = false;
     const isDrawing = useRef(false);
     let prevMouseX : number; 
     let prevMouseY:number;
     //REQUIRED?!? WTF!
-    console.log(canvasRef);
+    //console.log(canvasRef);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -66,15 +66,7 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef,imgCont
         let prevMouseX = 0;
         let prevMouseY = 0;
         
-        
-        
         //CanvasRenderingContext2D Documentation: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
-        
-        //an attempt to force the canvas to 1024x1024, might not be needed - Eli
-        //ctx.fillStyle = "white";
-        //ctx.fillRect(0, 0, 1024, 1024);
-
-        
       
         const startDraw = (e: MouseEvent) => {
             prevMouseX = e.offsetX
