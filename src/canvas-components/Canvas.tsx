@@ -24,40 +24,24 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef,imgCont
     let prevMouseY:number;
     //REQUIRED?!? WTF!
     console.log(canvasRef);
-    let ctx = null;
+
     useEffect(() => {
         const canvas = canvasRef.current;
-        
-        if (!canvas){
-            console.log("WARNING: Canvas is Null")
-            return;
+        if (!canvas) return;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
+    
+        const canvasContainer = document.getElementById("canvas-wrapper") as HTMLDivElement;
+        canvas.width = canvasContainer.offsetWidth;
+        canvas.height = canvasContainer.offsetHeight;
+    
+        if (canvasContent) {
+            ctx.putImageData(canvasContent, 0, 0);
         }
-        
-        
-        //CanvasRenderingContext2D Documentation: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
-        var canvas_container = document.getElementById("canvas-wrapper") as HTMLDivElement;
-        canvas.width = canvas_container.offsetWidth; // 70% of the screen width
-        canvas.height = canvas_container.offsetHeight; // 70% f the screen height 
-        if(!ctx){ 
-            console.log("CREATING 2d ctx")
-            ctx = canvas.getContext("2d");
-        }
-        if (!ctx){
-            console.log("ERROR: 2d ctx IS NULL")
-              return;
-            }
-        if(canvasContent){
-
-            ctx.putImageData(canvasContent as ImageData ,0,0);
-        }
-        //an attempt to force the canvas to 1024x1024, might not be needed - Eli
-        //ctx.fillStyle = "white";
-        //ctx.fillRect(0, 0, 1024, 1024);
-            ctx.lineWidth = 2;
-        ctx.lineCap = "round"; // pen style 
-        ctx.strokeStyle = "blue"; // 
-
-        if(selectedTool=="undo") ctx.restore();
+    
+        ctx.lineWidth = 2;
+        ctx.lineCap = "round";
+        ctx.strokeStyle = "blue";
 
         window.addEventListener("load", () => {
             try {
@@ -68,18 +52,41 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef,imgCont
                 console.log(e);
             }
         });
+    }, []);
+
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
+
+        let isDrawing = false;
+        let prevMouseX = 0;
+        let prevMouseY = 0;
+        
+        
+        
+        //CanvasRenderingContext2D Documentation: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
+        
+        //an attempt to force the canvas to 1024x1024, might not be needed - Eli
+        //ctx.fillStyle = "white";
+        //ctx.fillRect(0, 0, 1024, 1024);
+
+        
       
-          const startDraw = (e: MouseEvent) => {
+        const startDraw = (e: MouseEvent) => {
             prevMouseX = e.offsetX
             prevMouseY = e.offsetY
-            isDrawing.current = true;
+            isDrawing = true;
             ctx.save();
-              ctx.beginPath();
+            ctx.beginPath();
             ctx.moveTo(e.offsetX, e.offsetY);
             }
 
         const drawing = (e: MouseEvent) => {
-            if (!isDrawing.current) {
+            if (!isDrawing) {
                 console.log("Mouse not clicked")
                 return;
             }
@@ -105,7 +112,7 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef,imgCont
         }
 
         const stopDraw = () => {
-            isDrawing.current = false;
+            isDrawing = false;
             ctx.beginPath();
 
         }
