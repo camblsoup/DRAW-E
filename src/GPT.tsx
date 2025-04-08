@@ -1,5 +1,4 @@
 import OpenAI from "openai"
-import {ImageGenerateParams} from "openai/resources/images";
 
 const apiUrl = "https://drawe-backend.onrender.com"
 
