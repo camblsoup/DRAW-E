@@ -12,6 +12,7 @@ import GetPromptBtn from './GetPromptBtn.tsx';
 import Categories from '../category-components/categories.tsx';
 import ImageToSpeechBtn from "./ImageToSpeechBtn.tsx";
 import DownloadButton from "./DownloadButton.tsx";
+import ImportButton from "./ImportButton.tsx";
 
 {/* IMAGES */ }
 import importBtn from "../assets/plus-button.svg";
@@ -67,7 +68,7 @@ export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
                             {/* PROMPT BOX SECTION */}
                             <div className='bottom-section-container'>
                                 <div className='prompt-box-container-render'>
-                                    <div import-button-container><img className='import-button' src={importBtn} /></div>
+                                <ImportButton canvasRef={canvasRef} tooltipText="Upload an image to draw on!" />
                                     <textarea className='prompt-box-text-render' placeholder="Ask anything" />
                                     <div><GetPromptBtn canvasRef={canvasRef} setIsImgGenerated={setIsImgGenerated} /></div>
                                 </div>
