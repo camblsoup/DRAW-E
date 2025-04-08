@@ -44,8 +44,8 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef,imgCont
         }
         if (!ctx){
             console.log("ERROR: 2d ctx IS NULL")
-            return;
-        }
+              return;
+            }
         if(canvasContent){
 
             ctx.putImageData(canvasContent as ImageData ,0,0);
@@ -53,7 +53,7 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef,imgCont
         //an attempt to force the canvas to 1024x1024, might not be needed - Eli
         //ctx.fillStyle = "white";
         //ctx.fillRect(0, 0, 1024, 1024);
-        ctx.lineWidth = 2;
+            ctx.lineWidth = 2;
         ctx.lineCap = "round"; // pen style 
         ctx.strokeStyle = "blue"; // 
 
@@ -68,15 +68,15 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef,imgCont
                 console.log(e);
             }
         });
-
-        const startDraw = (e: MouseEvent) => {
+      
+          const startDraw = (e: MouseEvent) => {
             prevMouseX = e.offsetX
             prevMouseY = e.offsetY
             isDrawing.current = true;
             ctx.save();
-            ctx.beginPath();
+              ctx.beginPath();
             ctx.moveTo(e.offsetX, e.offsetY);
-        }
+            }
 
         const drawing = (e: MouseEvent) => {
             if (!isDrawing.current) {
@@ -126,7 +126,7 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef,imgCont
             
         }
     }, [isDrawing,selectedTool]);
-    
+
     console.log("outsdie Effect ctxState=" +canvasContent);
     return <>
         <div id = "canvas-wrapper">

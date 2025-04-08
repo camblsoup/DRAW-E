@@ -10,6 +10,7 @@ import Canvas from './Canvas.tsx';
 import ToolBar from './ToolBar.tsx';
 import GetPromptBtn from './GetPromptBtn.tsx';
 import Categories from '../category-components/categories.tsx';
+import ImageToSpeechBtn from "./ImageToSpeechBtn.tsx";
 
 {/* IMAGES */ }
 import importBtn from "../assets/plus-button.svg";
@@ -59,6 +60,8 @@ export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
                                     <textarea className='prompt-box-text-render' placeholder="Ask anything" />
                                     <div><GetPromptBtn canvasRef={canvasRef} setIsImgGenerated={setIsImgGenerated} /></div>
                                 </div>
+                                {/* IMAGE TO SPEECH BUTTON*/}
+                                <div className='image-to-speech-button-container'><ImageToSpeechBtn canvasRef={canvasRef} /></div>
                                 {/* SAVE BUTTON */}
                                 <div className='save-button-container'><img className='save-button' src={downloadBtn} /></div>
                             </div>

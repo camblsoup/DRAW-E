@@ -1,4 +1,6 @@
-import { getImageDescription, textToSpeech } from "../GPT.tsx"
+import { imageToSpeech} from "../GPT.tsx"
+
+import sound_icon from '../assets/ImageToSpeech.svg'
 
 import './ImageToSpeechBtn.css'
 
@@ -9,7 +11,7 @@ interface Props {
 export default function ImageToSpeechBtn({ canvasRef }: Props) {
 async function handleClick() {
         //testing boolean, false will request from OpenAI, true will return default image
-        const istesting = true;
+        const istesting = false;
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
 
@@ -24,9 +26,9 @@ async function handleClick() {
                 return;
             }
 
-            console.log("Sending PNG image to editImage");
+            console.log("Sending PNG image to imageToSpeech");
             try {
-                const response = await editImage(blob, prompt, istesting);
+                const response = await imageToSpeech(blob, istesting);
                 console.log(response);
                 //prints the image url to the console
                 //console.log(response.image)
@@ -38,8 +40,14 @@ async function handleClick() {
                     console.error("No URL received from the server");
                 }
             } catch (error) {
-                console.error("editImage Error:", error);
+                console.error("textToSpeech Error:", error);
             }
-        }, "image/png");
+            
+        },);
     }
+    return (
+        <div className='image-to-speech-button-style' onClick={handleClick}>
+            <img className='image-to-speech-button' src={sound_icon} />
+        </div>
+    );
 }

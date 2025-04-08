@@ -145,14 +145,14 @@ export async function textToSpeech(text: string, isTesting: boolean) {
     //build the request form    
     const formData = new FormData();
     formData.append("text", text);
-
+    console.log("Sending text to textToSpeech: ", text);
     //send request to backend that will make the request to OpenAi API    
     try {
-        const response = await fetch(`${apiUrl}/edit`, {
-            method: "GET",
+        const response = await fetch(`${apiUrl}/texttospeech`, {
+            method: "POST",
             body: formData,
         });
-
+        console.log("formData:", formData);
         //if the backend or OpenAi API returns an error, throw an error        
         if (!response.ok) {
             const errorText = await response.text();
@@ -160,7 +160,10 @@ export async function textToSpeech(text: string, isTesting: boolean) {
             throw new Error(`Failed to convert t: ${response.statusText}`);
         }
         //receive the mp3 from the backend
-        const data = await response.json();
+        const data = await response.blob();
+        const audioUrl = URL.createObjectURL(data);
+        const audio = new Audio(audioUrl);
+        audio.play();
         console.log("Text to speech converted successfully:", data);
         return data;
     } catch (error) {
@@ -177,7 +180,8 @@ export async function imageToSpeech(imageBlob: Blob, isTesting: boolean) {
     }
     //returns a text description of the image
     const text = await getImageDescription(imageBlob, isTesting);
+    console.log("Image to speech object being sent:", text);
     //converts the text description to speech and returns the mp3, hopefully?
-    return await textToSpeech(text, isTesting);
+    return await textToSpeech(text['text'], isTesting);
 }
 
