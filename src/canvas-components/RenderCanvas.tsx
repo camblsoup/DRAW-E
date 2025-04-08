@@ -11,10 +11,10 @@ import ToolBar from './ToolBar.tsx';
 import GetPromptBtn from './GetPromptBtn.tsx';
 import Categories from '../category-components/categories.tsx';
 import ImageToSpeechBtn from "./ImageToSpeechBtn.tsx";
+import DownloadButton from "./DownloadButton.tsx";
 
 {/* IMAGES */ }
 import importBtn from "../assets/plus-button.svg";
-import downloadBtn from "../assets/download_button.svg";
 import searchIcon from "../assets/magnifying_glass.svg";
 import LandingPage from "../LandingPage.tsx";
 import Sidebar from "../Sidebar.tsx";
@@ -74,7 +74,7 @@ export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
                                 {/* IMAGE TO SPEECH BUTTON*/}
                                 <div className='image-to-speech-button-container'><ImageToSpeechBtn canvasRef={canvasRef} /></div>
                                 {/* SAVE BUTTON */}
-                                <div className='save-button-container'><img className='save-button' src={downloadBtn} onClick={(saveToLocalMachine)}/></div>
+                                <DownloadButton onClick={saveToLocalMachine} tooltipText="Save image to your device" />
                             </div>
                         </div>
                         {/* SECTION 3: THE RIGHT SIDE STUFF */}

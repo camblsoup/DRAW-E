@@ -1,6 +1,9 @@
 .tooltip-container {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
     cursor: pointer;
 }
 
@@ -26,6 +29,9 @@
 }
 
 .tooltip-container:hover .tooltip-text {
+    position: absolute;
+    white-space: nowrap;
+    pointer-events: none;
     visibility: visible;
     opacity: 1;
 }
