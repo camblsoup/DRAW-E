@@ -14,35 +14,40 @@ import logout_icon from './assets/logout.svg'
 
 {/* COMPONENTS */ }
 import OpenCanvasBtn from './canvas-components/OpenCanvasBtn'
-import { generateImage,conversation } from './GPT'
+import { generateImage, conversation } from './GPT'
 import RenderCanvas from './canvas-components/RenderCanvas.tsx';
+import TooltipButton from './ToolTip.tsx'
 
 function LandingPage() {
   const [isCanvasOpen, setIsCanvasOpen] = useState(false);
   const [promptText, setPromptText] = useState('');
-  const [showChat, setShowChat] = useState(false);
-  const [gptResponse, setGptResponse] = useState('');
   const [generatedImageUrl, setGeneratedImageUrl] = useState('');
   //testing boolean, false will request from OpenAI, true will return default image
   const isTesting = false;
 
+  const [showChat, setShowChat] = useState(false);
+  const [gptResponse, setGptResponse] = useState('');
+
   /////////////////////////////////////////////////////////////////////////////
 
   const handlePrompt = async () => {
+    let gptResponse = null;
+    let imageurl = null;
     if (!promptText.trim()) {
       alert('The prompt box is empty. Please enter a prompt.')
       return
     }
+
     setShowChat(true);
-    const gptResponse = await conversation(promptText);
+    gptResponse = await conversation(promptText);
     setGptResponse(gptResponse);
 
-  // Get image
-    const imageurl = await generateImage(promptText, isTesting);
+    // Get image
+    imageurl = await generateImage(promptText, isTesting);
     console.log(imageurl);
     setGeneratedImageUrl(imageurl.image);
 
-    
+
     //console.log('Generating user image....', promptText)
     //let imageurl = await generateImage(promptText, isTesting)
     //console.log(imageurl)
@@ -100,35 +105,38 @@ function LandingPage() {
         </div>
         {/* 2 */}
         <div className="body">
-        {!showChat ? (
-        <>
-          <div className="body-column-container">
-            <div>
-              <img style={{ width: '5vw' }} src={logo2} />
-            </div>
-            <div className="program-name">DRAW-E</div>
-            <div>By Team 10</div>
-            <div>Let me turn your imagination into imagery!</div>
-            <div>
-              <div>
-                <OpenCanvasBtn setIsCanvasOpen={setIsCanvasOpen} />
-                {isCanvasOpen && (
-                  <div className="canvas-popup">
-                    <RenderCanvas setIsCanvasOpen={setIsCanvasOpen} />
+          {!showChat ? (
+            <>
+              <div className="body-column-container">
+                <div>
+                  <img style={{ width: '5vw' }} src={logo2} />
+                </div>
+                <div className="program-name">DRAW-E</div>
+                <div>By Team 10</div>
+                <div>Let me turn your imagination into imagery!</div>
+                <div>
+                  <div>
+                    <OpenCanvasBtn setIsCanvasOpen={setIsCanvasOpen} />
+                    {isCanvasOpen && (
+                      <div className="canvas-popup">
+                        <RenderCanvas setIsCanvasOpen={setIsCanvasOpen} />
+                      </div>
+                    )}
                   </div>
-                )}
+                </div>
               </div>
-            </div>
-          </div>
-          </>
-             ) : (
-            <div className="chat-view">
-              <button className="back-button" onClick={() => setShowChat(false)}>
-                ← Back
-              </button>
-              <div className="chat-bubble user">You: {promptText}</div>
-              <div className="chat-bubble gpt">DRAW-E: {gptResponse}</div>
-              <img className="generated-image" src={generatedImageUrl} alt="Generated art" />
+            </>
+          ) : (
+            <div className="chat-view-container">
+              <div className="chat-view">
+
+                <div className="chat-bubble-user">You: {promptText}</div>
+                <div className="chat-bubble-gpt">DRAW-E: {gptResponse}</div>
+                <div>
+                  <img className="generated-image" src={generatedImageUrl} alt="Generated art" />
+                </div>
+                <button className="back-button" onClick={() => setShowChat(false)}> ← Back</button>
+              </div>
             </div>
           )}
         </div>

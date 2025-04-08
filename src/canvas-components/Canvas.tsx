@@ -93,7 +93,7 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef, canvas
             } else if (selectedTool == 'eraser'){
                 //console.log("ERASER active");
                 //console.log("clearReact()");
-                ctx.clearRect(e.offsetX, e.offsetY, 1, 1);
+                ctx.clearRect(e.offsetX, e.offsetY, 50, 50);
                 
             } else if (selectedTool == 'square'){
                 let sqr_size = 1;

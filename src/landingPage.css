@@ -94,6 +94,7 @@ hr {
   transform: translateY(1.5px);
 }
 
+
 .chat-view {
   display: flex;
   flex-direction: column;
@@ -101,8 +102,9 @@ hr {
   justify-content: top;
   overflow-y: auto;
   height: 70vh;
-  max-width: 70vw;
+  width: 62vw;
   margin: 0 auto 0;
+  gap: 20px;
 }
 
 .back-button {
@@ -111,6 +113,7 @@ hr {
   background: #ddd;
   border: none;
   border-radius: 8px;
+  max-width: 70%
 }
 
 .chat-bubble {
@@ -121,23 +124,27 @@ hr {
   max-width: 70vw;
 }
 
-.chat-bubble.user {
+.chat-bubble-user {
   align-items: right;
-  background-color: #9eb6f9;
+  background-color: #64DEF8;
   align-self: flex-end;
+  padding: 10px 15px;
+  border-radius: 20px;
+  max-width: 400px;
 }
 
-.chat-bubble.gpt {
+.chat-bubble-gpt {
   align-items: left;
-  background-color: #dcf991;
+  background-color: #FDF7E7;
+  padding: 10px 15px;
+  border-radius: 20px;
+  max-width: 400px;
 }
 
 .generated-image {
-  align-items: center;
-  max-width: 100%;
+  align-items: left;
   height: 50vh;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   object-fit: contain;
 }
 
