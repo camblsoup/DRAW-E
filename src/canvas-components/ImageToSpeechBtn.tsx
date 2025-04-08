@@ -3,6 +3,7 @@ import { imageToSpeech} from "../GPT.tsx"
 import sound_icon from '../assets/ImageToSpeech.svg'
 
 import './ImageToSpeechBtn.css'
+import TooltipButton from "../ToolTip.tsx"
 
 interface Props {
     canvasRef: React.RefObject<HTMLCanvasElement>;
@@ -46,8 +47,8 @@ async function handleClick() {
         },);
     }
     return (
-        <div className='image-to-speech-button-style' onClick={handleClick}>
-            <img className='image-to-speech-button' src={sound_icon} />
-        </div>
-    );
+        <TooltipButton onClick={handleClick} tooltip="Click for audio description">
+          <img className="image-to-speech-button" src={sound_icon} alt="Audio Description" />
+        </TooltipButton>
+      );
 }
