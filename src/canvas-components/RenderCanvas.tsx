@@ -32,6 +32,17 @@ export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
     const imgContainerRef = useRef<HTMLImageElement | null>(null);
     const  [canvasContent, setCanvasContent] =useState<ImageData | null>(null);
 
+    const saveToLocalMachine = () => {
+        const canvas = canvasRef.current;
+        if (canvas) {
+            const dataURL = canvas.toDataURL("image/png");
+            const link = document.createElement("a");
+            link.href = dataURL;
+            link.download = "canvas.png";
+            link.click();
+        }
+    }
+
     return <>
         <div>
             {setIsCanvasOpen ? (
@@ -63,7 +74,7 @@ export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
                                 {/* IMAGE TO SPEECH BUTTON*/}
                                 <div className='image-to-speech-button-container'><ImageToSpeechBtn canvasRef={canvasRef} /></div>
                                 {/* SAVE BUTTON */}
-                                <div className='save-button-container'><img className='save-button' src={downloadBtn} /></div>
+                                <div className='save-button-container'><img className='save-button' src={downloadBtn} onClick={(saveToLocalMachine)}/></div>
                             </div>
                         </div>
                         {/* SECTION 3: THE RIGHT SIDE STUFF */}
