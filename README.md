@@ -32,6 +32,8 @@ You may also click on one of the two "New Canvas" buttons to bring up a drawable
 
 ### Drawable Canvas:
  Limited functionality on the drawable canvas includes:
+    - Pencil Tool
+    - 
 
 | Month   | Savings |
 | -------- | ------- |

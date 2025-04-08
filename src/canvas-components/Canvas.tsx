@@ -3,6 +3,10 @@ import GetPromptBtn from "./GetPromptBtn";
 import "./Canvas.css";
 import { createContext, useEffect, useState } from "react";
 import { useRef, RefObject } from "react";
+import SelectedColour from "SelectedColour.tsx";
+
+
+
 // Source: https://www.youtube.com/watch?v=y84tBZo8GFo
 // soruce: https://stackoverflow.com/questions/64625367/is-there-a-way-to-use-canvas-to-draw-something-on-the-click-of-a-button-with-rea
 // Ref Documentation https://react.dev/reference/react/useRef
@@ -22,10 +26,12 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef, canvas
     const isDrawing = useRef(false);
     let prevMouseX : number; 
     let prevMouseY:number;
+
     //REQUIRED?!? WTF!
     //console.log(canvasRef);
 
     useEffect(() => {
+        
         const canvas = canvasRef.current;
         if (!canvas) return;
         const ctx = canvas.getContext("2d");
@@ -41,7 +47,7 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef, canvas
     
         ctx.lineWidth = 2;
         ctx.lineCap = "round";
-        ctx.strokeStyle = "blue";
+        ctx.strokeStyle = "black";
 
         window.addEventListener("load", () => {
             try {
@@ -66,13 +72,27 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef, canvas
         let prevMouseX = 0;
         let prevMouseY = 0;
         
+        if(isToolColour(selectedTool)){
+
+            ctx.strokeStyle=selectedTool.toString();
+            ctx.fillStyle = selectedTool.toString();
+        }
+
+        console.log(`rgb(${selectedTool})`);
+        console.log(ctx.strokeStyle);
         //CanvasRenderingContext2D Documentation: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
+        
+        //an attempt to force the canvas to 1024x1024, might not be needed - Eli
+        //ctx.fillStyle = "white";
+        //ctx.fillRect(0, 0, 1024, 1024);
+
+        
       
         const startDraw = (e: MouseEvent) => {
             prevMouseX = e.offsetX
             prevMouseY = e.offsetY
             isDrawing = true;
-            ctx.save();
+            
             ctx.beginPath();
             ctx.moveTo(e.offsetX, e.offsetY);
             }
@@ -93,13 +113,17 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef, canvas
             } else if (selectedTool == 'eraser'){
                 //console.log("ERASER active");
                 //console.log("clearReact()");
-                ctx.clearRect(e.offsetX, e.offsetY, 1, 1);
+                ctx.clearRect(e.offsetX, e.offsetY, 10, 10);
                 
             } else if (selectedTool == 'square'){
                 let sqr_size = 1;
                 //console.log("SQUARE  active");
                 ctx.lineTo(e.offsetX, e.offsetY); //: console.log("context is NULL (1)");
                 ctx.strokeRect(prevMouseX,prevMouseY,e.offsetX-prevMouseX,e.offsetY-prevMouseY);// : console.log("context is NULL (2)");
+            } else if(selectedTool=='fill'){
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }else if(selectedTool=='circle'){
+                // help there is no circle stroke lol 
             }
         }
 
@@ -117,6 +141,7 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef, canvas
         setCanvasContent(ctx.getImageData(0, 0,canvas.height,canvas.width));
         //console.log("dataURL=" +ctx.canvas.toDataURL(1,1,canvas.height,canvas.width));
         ctx?.save();
+        //prevTool= selectedTool;
         return () => {
             canvas.removeEventListener("mousedown", startDraw);
             canvas.removeEventListener("mousemove", drawing);
@@ -132,4 +157,15 @@ export default function Canvas({setIsCanvasOpen, selectedTool, canvasRef, canvas
             <canvas ref={canvasRef} className="drawing-canvas" id="drawContainer"  value={null} /> 
         </div>
     </>
+}
+
+function isToolColour(tool:String){
+    let colours =['red','orange','yellow','green','blue','pink','purple','black','grey','white']
+        return colours.includes(tool.toString());
+
+}
+function isTool(tool:String){
+    let colours =['red','orange','yellow','green','blue','pink','purple','black','grey','white']
+        return colours.includes(tool.toString());
+
 }

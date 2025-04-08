@@ -1,7 +1,7 @@
 
 
 {/* IMAGES*/ }
-import up_arrow from './assets/up_arrow2.svg'
+import up_arrow from '../assets/up_arrow2.svg'
 import handlePrompt from '../LandingPage.tsx'
 
 interface Props {

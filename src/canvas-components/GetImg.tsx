@@ -14,6 +14,16 @@ import triangle from "../assets/triangle.svg";
 import circle from "../assets/circle.svg";
 import download from "../assets/download.svg";
 import fill from "../assets/fill.svg";
+import red from "../assets/red.svg";
+import orange from "../assets/orange.svg";
+import yellow from "../assets/yellow.svg";
+import green from "../assets/green.svg";
+import blue from "../assets/blue.svg";
+import pink from "../assets/pink.svg";
+import purple from "../assets/purple.svg";
+import black from "../assets/black.svg";
+import white from "../assets/white.svg";
+import grey from "../assets/grey.svg";
 import imgNotFound from "../assets/imgNotFound.svg";
 
 interface Props{ 
@@ -64,6 +74,36 @@ export default function GetImg({altText}: Props){
             break;
         case "circle":
                 img = circle;
+                break;
+        case "red":
+                img = red;
+                break;
+        case "orange":
+                img = orange;
+                break;
+        case "yellow":
+                img = yellow;
+                break;
+        case "green":
+                img = green;
+                break;
+        case "blue":
+                img = blue;
+                break;
+        case "purple":
+                img = purple;
+                break;
+        case "pink":
+                img = pink;
+                break;
+        case "black":
+                img = black;
+                break;
+        case "grey":
+                img = grey;
+                break;
+        case "white":
+                img = white;
                 break;
         case "fill":
             img = fill;
