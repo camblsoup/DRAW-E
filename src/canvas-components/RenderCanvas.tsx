@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { createContext, useContext, useRef, useState } from "react";
 
 {/* STYLESHEETS */ }
 import './Canvas.css'
@@ -13,6 +13,7 @@ import Categories from '../category-components/categories.tsx';
 import ImageToSpeechBtn from "./ImageToSpeechBtn.tsx";
 import DownloadButton from "./DownloadButton.tsx";
 import ImportButton from "./ImportButton.tsx";
+//import DrawableTool from "./DrawableTool.tsx";
 
 {/* IMAGES */ }
 import importBtn from "../assets/plus-button.svg";
@@ -32,6 +33,7 @@ export default function RenderCanvas({ setIsCanvasOpen }: RenderCanvasProps) {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const imgContainerRef = useRef<HTMLImageElement | null>(null);
     const [canvasContent, setCanvasContent] = useState<ImageData | null>(null);
+    //const drawableTool = useContext(DrawableTool);
 
     const saveToLocalMachine = () => {
         const canvas = canvasRef.current;

@@ -26,7 +26,7 @@ export default function ToolBar({ selectedTool, setSelectedTool }: Props) {
         ['square', ['circle', 'triangle']],
         ["fill"],
         ['dropper'],
-        ['colour-select'],
+        ['colour-select',['red','orange','yellow','green','blue','pink','purple','black','grey','white']],
         ['undo'],
         ['redo']
     ];

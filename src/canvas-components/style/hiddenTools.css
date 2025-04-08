@@ -10,7 +10,7 @@
 
 }
 #popover-laso{
-    position: absolute; top: 30.5%; left: 11%;
+    position: absolute; top: 28.1%; left: 11%;
     background-color: transparent;
     flex-direction: row;
     background-color: white;
@@ -31,8 +31,8 @@
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
 }
-#colour-select{
-    position: absolute; top: 40%; left: 11%;
+#popover-colour-select{
+    position: absolute; top: 30%; left: 11%;
     background-color: white;
     flex-direction: row;
     margin: 0%;
